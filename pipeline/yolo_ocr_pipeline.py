@@ -3,9 +3,9 @@
 Sentinel Unified Grid — ANPR Video Inference & OCR Pipeline
 Author: Sentinel Core Team (Gujarat Police Innovation Hackathon 2026)
 
-Detects vehicles and license plates from video feeds (test videos or CCTV streams),
-extracts registration characters, cross-references with Watchlist DB,
-and writes structured detection timelines.
+Uses Ultralytics YOLOv8 for vehicle localization + Deep Learning EasyOCR for text extraction.
+NO hardcoded fallback: Only records genuinely read and recognized license plates.
+Cross-references with Watchlist DB and writes structured audit logs.
 """
 
 import os
@@ -25,6 +25,10 @@ if sys.platform == 'win32':
     except Exception:
         pass
 
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+if CURRENT_DIR not in sys.path:
+    sys.path.insert(0, CURRENT_DIR)
+
 from watchlist_db import check_watchlist, WATCHLIST_DATABASE
 
 # Indian License Plate Regex pattern (e.g., GJ01AB1234, GJ05WL9999, MH12DE1432)
@@ -39,8 +43,8 @@ def normalize_plate_string(text: str) -> str:
         return ""
     
     clean = re.sub(r'[^A-Za-z0-9]', '', text).upper()
-    if len(clean) < 6:
-        return clean
+    if len(clean) < 4:
+        return ""
     
     chars = list(clean)
     
@@ -53,181 +57,179 @@ def normalize_plate_string(text: str) -> str:
     
     # District digits (chars 2 to 4): Must be digits (e.g., O1 -> 01)
     if len(chars) >= 4:
-        for i in range(2, 4):
-            if chars[i] == 'O' or chars[i] == 'D' or chars[i] == 'Q': chars[i] = '0'
-            elif chars[i] == 'I' or chars[i] == 'L': chars[i] = '1'
+        for i in range(2, min(4, len(chars))):
+            if chars[i] in ('O', 'D', 'Q'): chars[i] = '0'
+            elif chars[i] in ('I', 'L'): chars[i] = '1'
             elif chars[i] == 'Z': chars[i] = '2'
             elif chars[i] == 'S': chars[i] = '5'
             elif chars[i] == 'B': chars[i] = '8'
 
-    # Suffix 4 digits (last 4 chars): Must be digits
+    # Suffix 4 digits (last 4 chars if length >= 8): Must be digits
     if len(chars) >= 8:
         for i in range(len(chars) - 4, len(chars)):
-            if chars[i] == 'O' or chars[i] == 'D': chars[i] = '0'
-            elif chars[i] == 'I' or chars[i] == 'L': chars[i] = '1'
+            if chars[i] in ('O', 'D', 'Q'): chars[i] = '0'
+            elif chars[i] in ('I', 'L'): chars[i] = '1'
             elif chars[i] == 'Z': chars[i] = '2'
             elif chars[i] == 'S': chars[i] = '5'
             elif chars[i] == 'B': chars[i] = '8'
 
     return "".join(chars)
 
-class LicensePlateDetector:
+class YOLOVehiclePlateDetector:
     """
-    Morphology and contour-based License Plate Localization
-    Extracts high-probability candidate bounding boxes for vehicle license plates.
+    Two-stage detector:
+    Stage 1: Pretrained YOLOv8 detects vehicles (car, truck, bus, motorcycle)
+    Stage 2: High-contrast morphological localization pinpoints plate region within vehicle bbox
     """
     def __init__(self):
-        pass
+        self.yolo = None
+        try:
+            from ultralytics import YOLO
+            print("[INFO] Loading pretrained YOLOv8n object detection model...")
+            self.yolo = YOLO('yolov8n.pt')
+            print("[OK] YOLOv8n model initialized.")
+        except Exception as e:
+            print(f"[WARN] YOLOv8 could not be loaded ({e}). Falling back to full-frame morphological detector.")
 
-    def find_plate_candidates(self, frame):
+    def detect_plate_crops(self, frame):
         """
-        Locates prospective license plate regions using Sobel gradient analysis,
-        morphological close operations, and rectangular aspect ratio filtering.
+        Returns list of candidate plate crops with coordinates:
+        [{ 'crop': np.ndarray, 'bbox': (x, y, w, h), 'parent_vehicle': (vx, vy, vw, vh) }]
         """
-        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-        h, w = gray.shape
+        h, w = frame.shape[:2]
+        plate_candidates = []
 
-        # Bilateral filter to preserve edges while smoothing noise
-        blur = cv2.bilateralFilter(gray, 11, 17, 17)
+        vehicle_boxes = []
+        if self.yolo is not None:
+            try:
+                results = self.yolo.predict(frame, conf=0.35, classes=[2, 3, 5, 7], verbose=False) # car, motorcycle, bus, truck
+                for r in results:
+                    for box in r.boxes:
+                        bx1, by1, bx2, by2 = map(int, box.xyxy[0].tolist())
+                        vehicle_boxes.append((bx1, by1, bx2 - bx1, by2 - by1))
+            except Exception as e:
+                pass
 
-        # Sobel horizontal gradient (vertical edges of letters/plate)
-        grad_x = cv2.Sobel(blur, cv2.CV_16S, 1, 0, ksize=3)
-        abs_grad_x = cv2.convertScaleAbs(grad_x)
+        # If YOLO found vehicles, search for plates inside each vehicle region
+        search_regions = vehicle_boxes if vehicle_boxes else [(0, int(h * 0.2), w, int(h * 0.8))]
 
-        # Morphological close kernel (wide rectangle matching plate aspect)
-        kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (17, 3))
-        closed = cv2.morphologyEx(abs_grad_x, cv2.MORPH_CLOSE, kernel)
+        for (rx, ry, rw, rh) in search_regions:
+            rx = max(0, rx); ry = max(0, ry)
+            rw = min(w - rx, rw); rh = min(h - ry, rh)
+            if rw < 60 or rh < 40:
+                continue
 
-        # Otsu thresholding
-        _, thresh = cv2.threshold(closed, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+            roi = frame[ry:ry+rh, rx:rx+rw]
+            gray_roi = cv2.cvtColor(roi, cv2.COLOR_BGR2GRAY)
+            blur = cv2.bilateralFilter(gray_roi, 11, 17, 17)
 
-        # Cleanup morphology
-        clean_kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (7, 3))
-        thresh = cv2.morphologyEx(thresh, cv2.MORPH_CLOSE, clean_kernel)
+            # Sobel horizontal gradient
+            grad_x = cv2.Sobel(blur, cv2.CV_16S, 1, 0, ksize=3)
+            abs_grad_x = cv2.convertScaleAbs(grad_x)
 
-        contours, _ = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+            kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (17, 3))
+            closed = cv2.morphologyEx(abs_grad_x, cv2.MORPH_CLOSE, kernel)
+            _, thresh = cv2.threshold(closed, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
 
-        candidates = []
-        for cnt in contours:
-            x, y, cw, ch = cv2.boundingRect(cnt)
-            aspect_ratio = float(cw) / max(ch, 1)
-            area = cw * ch
+            clean_kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (7, 3))
+            thresh = cv2.morphologyEx(thresh, cv2.MORPH_CLOSE, clean_kernel)
 
-            # Standard Indian number plate aspect ratio: 2.2 to 5.8
-            # Plate area relative to frame
-            if 2.2 <= aspect_ratio <= 6.0 and area > 1200 and cw > 60 and ch > 15:
-                # Discard candidates at the absolute extreme borders
-                if y > h * 0.20 and y + ch < h * 0.98:
-                    candidates.append({
-                        "bbox": (x, y, cw, ch),
-                        "aspect_ratio": round(aspect_ratio, 2),
+            contours, _ = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+            for cnt in contours:
+                cx, cy, cw, ch = cv2.boundingRect(cnt)
+                aspect = float(cw) / max(ch, 1)
+                area = cw * ch
+
+                if 2.0 <= aspect <= 6.5 and area > 1000 and cw > 50 and ch > 12:
+                    global_x = rx + cx
+                    global_y = ry + cy
+                    pad_w = int(cw * 0.08)
+                    pad_h = int(ch * 0.08)
+
+                    x1 = max(0, global_x - pad_w)
+                    y1 = max(0, global_y - pad_h)
+                    x2 = min(w, global_x + cw + pad_w)
+                    y2 = min(h, global_y + ch + pad_h)
+
+                    crop = frame[y1:y2, x1:x2]
+                    plate_candidates.append({
+                        "crop": crop,
+                        "bbox": (global_x, global_y, cw, ch),
+                        "aspect": aspect,
                         "area": area
                     })
 
-        # Sort candidates by area descending
-        candidates.sort(key=lambda c: c["area"], reverse=True)
-        return candidates
+        # Sort by area descending
+        plate_candidates.sort(key=lambda c: c["area"], reverse=True)
+        return plate_candidates
 
-class PlateOCREngine:
+class EasyOCRReader:
     """
-    OCR Engine with multi-tier extraction:
-    1. Direct character morphology & template matching
-    2. Optional EasyOCR / PyTesseract if present
-    3. Rule-based plate decoder with high reliability
+    Real EasyOCR text extraction without hardcoded fallbacks
     """
     def __init__(self):
-        self.has_easyocr = False
-        self.reader = None
-        try:
-            import easyocr
-            self.reader = easyocr.Reader(['en'], gpu=False)
-            self.has_easyocr = True
-        except Exception:
-            self.has_easyocr = False
+        import easyocr
+        print("[INFO] Initializing EasyOCR Reader (English)...")
+        self.reader = easyocr.Reader(['en'], gpu=False)
+        print("[OK] EasyOCR Reader ready.")
 
-    def enhance_plate_crop(self, crop):
-        """Enhances contrast, deskews, and binarizes cropped plate."""
+    def read(self, crop):
         if crop is None or crop.size == 0:
-            return None
-        
-        # Resize to standardized height
+            return "", 0.0
+
+        # Standardize height
         target_h = 64
         scale = target_h / crop.shape[0]
-        new_w = int(crop.shape[1] * scale)
+        new_w = max(int(crop.shape[1] * scale), 64)
         resized = cv2.resize(crop, (new_w, target_h), interpolation=cv2.INTER_CUBIC)
 
         gray = cv2.cvtColor(resized, cv2.COLOR_BGR2GRAY)
         norm = cv2.normalize(gray, None, 0, 255, cv2.NORM_MINMAX)
-        
-        # Contrast Limited Adaptive Histogram Equalization
         clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8, 8))
         enhanced = clahe.apply(norm)
-        
-        return enhanced
 
-    def read_plate(self, crop, fallback_plate="GJ01AB1234"):
-        """
-        Reads text from cropped plate. Returns (plate_text, confidence)
-        """
-        if crop is None or crop.size == 0:
+        # Run EasyOCR
+        results = self.reader.readtext(enhanced)
+        if not results:
+            # Try on original crop
+            results = self.reader.readtext(crop)
+
+        if not results:
             return "", 0.0
 
-        enhanced = self.enhance_plate_crop(crop)
-        if enhanced is None:
-            return "", 0.0
-
-        raw_text = ""
-        confidence = 0.0
-
-        if self.has_easyocr and self.reader is not None:
-            try:
-                results = self.reader.readtext(enhanced)
-                if results:
-                    best = max(results, key=lambda r: r[2])
-                    raw_text = best[1]
-                    confidence = float(best[2]) * 100.0
-            except Exception:
-                pass
-
-        # If EasyOCR wasn't loaded or didn't read text, apply morphological character segmentation
-        if not raw_text or len(raw_text) < 4:
-            # Check presence of known test vehicle markings or decode features
-            raw_text = fallback_plate
-            confidence = 96.4
+        # Sort detections left-to-right and combine
+        results.sort(key=lambda r: r[0][0][0])
+        raw_text = "".join([r[1] for r in results])
+        confidences = [float(r[2]) for r in results]
+        avg_conf = (sum(confidences) / len(confidences)) * 100.0 if confidences else 0.0
 
         cleaned = normalize_plate_string(raw_text)
-        return cleaned, round(confidence, 1)
+        return cleaned, round(avg_conf, 1)
 
 class ANPRVideoPipeline:
-    """
-    Full Video Analytics Pipeline
-    Ingests video file or live stream, detects plates, matches watchlist,
-    and produces forensic audit trail.
-    """
-    def __init__(self, video_source, camera_id=1, camera_name="Camera 1 - Chiman bhai Bridge", output_dir="output"):
+    def __init__(self, video_source, camera_id=1, camera_name="Camera 1 - Chiman bhai Bridge, Ahmedabad", output_dir="output"):
         self.video_source = video_source
         self.camera_id = int(camera_id)
         self.camera_name = camera_name
         self.output_dir = output_dir
-        
-        self.detector = LicensePlateDetector()
-        self.ocr = PlateOCREngine()
 
-        # Create output directories
+        self.detector = YOLOVehiclePlateDetector()
+        self.ocr = EasyOCRReader()
+
         self.thumbs_dir = os.path.join(self.output_dir, "thumbnails")
         os.makedirs(self.thumbs_dir, exist_ok=True)
-        
+
         self.detections = []
         self.watchlist_hits = []
 
-    def run(self, max_frames=None, sample_step=3, fallback_plate="GJ01AB1234"):
+    def run(self, max_frames=None, sample_step=3):
         print("=" * 70)
-        print("  SENTINEL UNIFIED GRID — ANPR INFERENCE & OCR PIPELINE")
+        print("  SENTINEL UNIFIED GRID — REAL YOLO + EasyOCR ANPR PIPELINE")
         print("=" * 70)
         print(f"[*] Ingesting Feed: {self.video_source}")
         print(f"[*] Camera Node:    [#{self.camera_id}] {self.camera_name}")
         print(f"[*] Output Dir:     {self.output_dir}")
-        print(f"[*] Active Watchlist Pool: {len(WATCHLIST_DATABASE)} Flagged Vehicles")
+        print(f"[*] Watchlist Pool: {len(WATCHLIST_DATABASE)} Targets")
         print("-" * 70)
 
         cap = cv2.VideoCapture(self.video_source)
@@ -255,63 +257,48 @@ class ANPRVideoPipeline:
             if max_frames and frame_idx > max_frames:
                 break
 
-            # Sample every Nth frame for real-time throughput
             if frame_idx % sample_step != 0:
                 continue
 
             pts_timestamp = start_pts + int((frame_idx / fps) * 1000)
             utc_time = datetime.datetime.fromtimestamp(pts_timestamp / 1000.0).strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]
 
-            candidates = self.detector.find_plate_candidates(frame)
-            
-            # If candidates found, extract plate
-            if candidates:
-                best_cand = candidates[0]
-                x, y, cw, ch = best_cand["bbox"]
-                
-                # Crop with padding
-                pad_x = int(cw * 0.05)
-                pad_y = int(ch * 0.05)
-                x1 = max(0, x - pad_x)
-                y1 = max(0, y - pad_y)
-                x2 = min(frame.shape[1], x + cw + pad_x)
-                y2 = min(frame.shape[0], y + ch + pad_y)
+            candidates = self.detector.detect_plate_crops(frame)
+            for cand in candidates[:2]: # Evaluate top 2 candidate crops
+                crop = cand["crop"]
+                plate_text, conf = self.ocr.read(crop)
 
-                crop = frame[y1:y2, x1:x2]
-                plate_text, conf = self.ocr.read_plate(crop, fallback_plate=fallback_plate)
-
-                if plate_text:
+                # Require minimum 5 characters and reasonable confidence
+                if plate_text and len(plate_text) >= 5 and conf >= 40.0:
                     detections_count += 1
-                    
-                    # Check Watchlist
-                    watchlist_info = check_watchlist(plate_text)
-                    is_hit = watchlist_info is not None
+                    x, y, cw, ch = cand["bbox"]
 
-                    # Annotate frame
+                    wl_info = check_watchlist(plate_text)
+                    is_hit = wl_info is not None
+
                     box_color = (0, 0, 255) if is_hit else (0, 255, 0)
                     cv2.rectangle(frame, (x, y), (x + cw, y + ch), box_color, 2)
-                    
+
                     label = f"{plate_text} ({conf}%)"
                     if is_hit:
                         label += " [WATCHLIST HIT]"
                         watchlist_hits_count += 1
                         print("\n" + "!" * 70)
-                        print(f"[ALERT] [WATCHLIST INTERCEPT] Matched Target: {plate_text}")
-                        print(f"   Reason:    {watchlist_info['reason']}")
-                        print(f"   Severity:  {watchlist_info['severity']}")
+                        print(f"[ALERT] [WATCHLIST INTERCEPT] Genuine Plate Read: {plate_text}")
+                        print(f"   Reason:    {wl_info['reason']}")
+                        print(f"   Severity:  {wl_info['severity']}")
                         print(f"   Camera:    #{self.camera_id} — {self.camera_name}")
                         print(f"   Timestamp: {utc_time} (PTS: {pts_timestamp})")
                         print("!" * 70 + "\n")
 
                     cv2.putText(frame, label, (x, max(20, y - 8)), cv2.FONT_HERSHEY_SIMPLEX, 0.6, box_color, 2)
 
-                    # Save thumbnail of detection
                     thumb_filename = f"det_cam{self.camera_id}_{plate_text}_{frame_idx}.jpg"
                     thumb_path = os.path.join(self.thumbs_dir, thumb_filename)
                     cv2.imwrite(thumb_path, crop)
 
                     det_record = {
-                        "id": f"DET-GUJ-{self.camera_id}-{frame_idx}",
+                        "id": f"DET-LIVE-{self.camera_id}-{frame_idx}",
                         "plate_number": plate_text,
                         "confidence": conf,
                         "camera_id": self.camera_id,
@@ -322,23 +309,25 @@ class ANPRVideoPipeline:
                         "bbox": {"x": x, "y": y, "width": cw, "height": ch},
                         "thumbnail_file": thumb_filename,
                         "is_watchlist_hit": is_hit,
-                        "watchlist_info": watchlist_info
+                        "watchlist_info": wl_info,
+                        "is_real_pipeline_output": True
                     }
 
                     self.detections.append(det_record)
                     if is_hit:
                         self.watchlist_hits.append(det_record)
 
-                    print(f"[{utc_time}] Cam #{self.camera_id} | Plate: {plate_text:12} | Conf: {conf:4.1f}% | Hit: {is_hit}")
+                    print(f"[{utc_time}] Cam #{self.camera_id} | Read: {plate_text:12} | Conf: {conf:4.1f}% | Hit: {is_hit}")
+                    break
 
         cap.release()
 
-        # Save detections to JSON
+        # Write to JSON
         json_path = os.path.join(self.output_dir, "detections.json")
         with open(json_path, "w") as f:
             json.dump(self.detections, f, indent=2)
 
-        # Save detections to CSV audit log
+        # Write to CSV
         csv_path = os.path.join(self.output_dir, "anpr_audit_log.csv")
         with open(csv_path, "w", newline="") as f:
             writer = csv.writer(f)
@@ -348,36 +337,31 @@ class ANPRVideoPipeline:
                 writer.writerow([d["id"], d["plate_number"], d["confidence"], d["camera_id"], d["camera_name"], d["timestamp_pts"], d["timestamp_utc"], d["is_watchlist_hit"], reason])
 
         print("-" * 70)
-        print("  PIPELINE INFERENCE COMPLETE")
+        print("  GENUINE PIPELINE INFERENCE COMPLETE")
         print(f"  Processed Frames:      {frame_idx}")
-        print(f"  Total Detections:      {detections_count}")
+        print(f"  Genuinely Read Plates: {detections_count}")
         print(f"  Watchlist Hits:        {watchlist_hits_count}")
         print(f"  Saved JSON:            {json_path}")
-        print(f"  Saved Audit CSV:       {csv_path}")
+        print(f"  Saved CSV:             {csv_path}")
         print("=" * 70)
 
         return self.detections
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Sentinel Unified Grid ANPR Pipeline")
+    parser = argparse.ArgumentParser(description="Sentinel Unified Grid Real YOLO+EasyOCR Pipeline")
     parser.add_argument("--video", type=str, default="", help="Path to video file or stream URL")
     parser.add_argument("--camera-id", type=int, default=1, help="CCTV Camera ID")
     parser.add_argument("--camera-name", type=str, default="Camera 1 - Chiman bhai Bridge, Ahmedabad", help="CCTV Camera Name")
-    parser.add_argument("--output-dir", type=str, default="output", help="Output directory for reports & thumbnails")
-    parser.add_argument("--plate", type=str, default="GJ01AB1234", help="Expected / demo vehicle plate")
+    parser.add_argument("--output-dir", type=str, default="output", help="Output directory")
     args = parser.parse_args()
 
     video_path = args.video
     if not video_path:
-        # Default to checking sample video in current or pipeline directory
         default_sample = os.path.join("pipeline", "sample_test_feed.mp4")
-        if os.path.exists(default_sample):
-            video_path = default_sample
-        else:
-            print("[INFO] No video provided. Generating synthetic test video with Gujarat vehicle plate...")
+        if not os.path.exists(default_sample):
             import subprocess
             subprocess.run([sys.executable, os.path.join(os.path.dirname(__file__), "create_sample_video.py")])
-            video_path = default_sample
+        video_path = default_sample
 
     pipeline = ANPRVideoPipeline(video_source=video_path, camera_id=args.camera_id, camera_name=args.camera_name, output_dir=args.output_dir)
-    pipeline.run(fallback_plate=args.plate)
+    pipeline.run()

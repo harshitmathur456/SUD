@@ -125,13 +125,16 @@
                 </div>
 
                 <!-- Custom Test Video Ingestion & Forensic Export Actions -->
-                <div style="margin-top: 10px; display: flex; gap: 8px;">
-                  <button id="btn-open-video-anpr" class="btn-header accent" style="flex: 1; justify-content: center; font-size: 11px; padding: 7px 10px;" title="Upload or ingest any video file to run ANPR detection (P0 Item 1)">
-                    <i class="fas fa-file-video"></i> Ingest Test Video
+                <div style="margin-top: 10px; display: flex; gap: 6px;">
+                  <button id="btn-open-video-anpr" class="btn-header accent" style="flex: 1; justify-content: center; font-size: 11px; padding: 7px 6px;" title="Upload or ingest any video file to run ANPR detection (P0 Item 1)">
+                    <i class="fas fa-file-video"></i> Test Video
                   </button>
                   <input type="file" id="video-file-input" accept="video/mp4,video/webm,video/ogg" style="display:none;">
-                  <button id="btn-export-dossier" class="btn-header" style="justify-content: center; font-size: 11px; padding: 7px 10px;" title="Export forensic evidence dossier (JSON & CSV)">
-                    <i class="fas fa-file-arrow-down"></i> Export Dossier
+                  <button id="btn-sync-pipeline" class="btn-header" style="justify-content: center; font-size: 11px; padding: 7px 8px; color: #34d399; border-color: rgba(16, 185, 129, 0.4);" title="Sync genuine detection records from Python pipeline (output/detections.json)">
+                    <i class="fas fa-rotate"></i> Sync Pipeline
+                  </button>
+                  <button id="btn-export-dossier" class="btn-header" style="justify-content: center; font-size: 11px; padding: 7px 8px;" title="Export forensic evidence dossier (JSON & CSV)">
+                    <i class="fas fa-file-arrow-down"></i> Export
                   </button>
                 </div>
               </div>

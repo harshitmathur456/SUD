@@ -191,9 +191,11 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="vehicle-summary-card ${isWatchlist ? 'alert-card' : ''}">
         <div class="vehicle-header-row">
           <span class="vehicle-plate-badge">${v.plate_number}</span>
-          ${isWatchlist 
-            ? '<span class="status-tag offline"><i class="fas fa-bell"></i> WATCHLIST HIT</span>' 
-            : '<span class="status-tag live"><i class="fas fa-check-circle"></i> GRID VERIFIED</span>'}
+          ${v.is_real_pipeline_output
+            ? '<span class="status-tag live" style="background: rgba(16, 185, 129, 0.25); color: #34d399; border: 1px solid #10b981;"><i class="fas fa-microchip"></i> LIVE PIPELINE (output/detections.json)</span>'
+            : isWatchlist 
+              ? '<span class="status-tag offline"><i class="fas fa-bell"></i> WATCHLIST HIT</span>' 
+              : '<span class="status-tag live"><i class="fas fa-check-circle"></i> GRID VERIFIED</span>'}
         </div>
 
         <div class="vehicle-route-banner">
@@ -653,6 +655,30 @@ document.addEventListener('DOMContentLoaded', () => {
       alert(`✅ Forensic Evidence Packet Exported!\nVehicle: ${currentActiveVehicle.plate_number}\nHops: ${currentActiveVehicle.detections.length}\nFormat: JSON (PTS Timestamps + Geolocation Bounds)`);
     });
   }
+
+  // 13. Sync Real Pipeline Output (output/detections.json)
+  async function performPipelineSync(notify = false) {
+    const result = await anprStorage.syncFromPipelineDetections();
+    updateGridBadgeCount();
+    if (notify) {
+      if (result.success && result.count > 0) {
+        alert(`✅ Synced with Python ANPR Pipeline!\nLoaded ${result.count} genuine detection events from output/detections.json into active search index.`);
+        if (searchInput && searchInput.value) {
+          executeSearch(searchInput.value);
+        }
+      } else {
+        alert('Notice: No new detection events found in output/detections.json yet. Run python pipeline/yolo_ocr_pipeline.py to generate detections.');
+      }
+    }
+  }
+
+  const btnSyncPipeline = document.getElementById('btn-sync-pipeline');
+  if (btnSyncPipeline) {
+    btnSyncPipeline.addEventListener('click', () => performPipelineSync(true));
+  }
+
+  // Auto-sync real detections on startup
+  performPipelineSync(false);
 
   // 10. Map HUD Controls
   const chkCircles = document.getElementById('chk-layer-circles');
