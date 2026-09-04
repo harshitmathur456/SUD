@@ -24,7 +24,7 @@ if sys.platform == 'win32':
 # Configure OpenCV FFmpeg timeout
 os.environ["OPENCV_FFMPEG_CAPTURE_OPTIONS"] = "stimeout;1500000|rtsp_transport;tcp"
 
-from yolo_ocr_pipeline import LicensePlateDetector, PlateOCREngine
+from yolo_ocr_pipeline import YOLOVehiclePlateDetector, EasyOCRReader
 from watchlist_db import check_watchlist, WATCHLIST_DATABASE
 
 def probe_host(host="live.corp8.cloud", port=8554, timeout=1.0):
@@ -49,8 +49,8 @@ class GovSandboxStreamPipeline:
         self.stream_url = stream_url or f"rtsp://live.corp8.cloud:8554/stream/{camera_id}"
         self.hls_url = f"http://live.corp8.cloud:8889/stream/{camera_id}/whep"
 
-        self.detector = LicensePlateDetector()
-        self.ocr = PlateOCREngine()
+        self.detector = YOLOVehiclePlateDetector()
+        self.ocr = EasyOCRReader()
 
         self.reconnect_delay = 2.0
         self.max_reconnect_delay = 30.0
@@ -131,12 +131,11 @@ class GovSandboxStreamPipeline:
             current_pts = start_pts + int((frame_idx / fps) * 1000)
             utc_time = datetime.datetime.fromtimestamp(current_pts / 1000.0).strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]
 
-            candidates = self.detector.find_plate_candidates(frame)
+            candidates = self.detector.detect_plate_crops(frame)
             if candidates:
                 cand = candidates[0]
-                x, y, cw, ch = cand["bbox"]
-                crop = frame[y:y+ch, x:x+cw]
-                plate_text, conf = self.ocr.read_plate(crop, fallback_plate=fallback_plate)
+                crop = cand["crop"]
+                plate_text, conf = self.ocr.read(crop)
 
                 if plate_text:
                     wl = check_watchlist(plate_text)
