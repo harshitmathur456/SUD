@@ -2,6 +2,22 @@
 node_modules/
 package-lock.json
 
+# Virtual Environments
+.venv/
+env/
+venv/
+
+# Model weights
+*.pt
+*.onnx
+*.engine
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+backend/*.db
+
 # Build outputs
 dist/
 
