@@ -1,0 +1,901 @@
+[
+  {
+    "id": "DET-GUJ-1-3",
+    "plate_number": "GJ01ST0007",
+    "confidence": 96.4,
+    "camera_id": 1,
+    "camera_name": "Camera 1 - Chiman bhai Bridge, Ahmedabad",
+    "frame_index": 3,
+    "timestamp_pts": 1788525747560,
+    "timestamp_utc": "2026-09-04 18:12:27.560",
+    "bbox": {
+      "x": 608,
+      "y": 397,
+      "width": 70,
+      "height": 20
+    },
+    "thumbnail_file": "det_cam1_GJ01ST0007_3.jpg",
+    "is_watchlist_hit": true,
+    "watchlist_info": {
+      "plate_number": "GJ01ST0007",
+      "reason": "CRITICAL: STOLEN VEHICLE (FIR #2026-8812 / Navrangpura PS)",
+      "category": "Stolen",
+      "severity": "CRITICAL",
+      "alert_sound": true,
+      "vehicle_desc": "White Hyundai Creta (2023)",
+      "owner": "Rameshchandra Patel",
+      "origin_district": "Ahmedabad",
+      "date_flagged": "2026-09-02"
+    }
+  },
+  {
+    "id": "DET-GUJ-1-6",
+    "plate_number": "GJ01ST0007",
+    "confidence": 96.4,
+    "camera_id": 1,
+    "camera_name": "Camera 1 - Chiman bhai Bridge, Ahmedabad",
+    "frame_index": 6,
+    "timestamp_pts": 1788525747680,
+    "timestamp_utc": "2026-09-04 18:12:27.680",
+    "bbox": {
+      "x": 612,
+      "y": 406,
+      "width": 73,
+      "height": 21
+    },
+    "thumbnail_file": "det_cam1_GJ01ST0007_6.jpg",
+    "is_watchlist_hit": true,
+    "watchlist_info": {
+      "plate_number": "GJ01ST0007",
+      "reason": "CRITICAL: STOLEN VEHICLE (FIR #2026-8812 / Navrangpura PS)",
+      "category": "Stolen",
+      "severity": "CRITICAL",
+      "alert_sound": true,
+      "vehicle_desc": "White Hyundai Creta (2023)",
+      "owner": "Rameshchandra Patel",
+      "origin_district": "Ahmedabad",
+      "date_flagged": "2026-09-02"
+    }
+  },
+  {
+    "id": "DET-GUJ-1-9",
+    "plate_number": "GJ01ST0007",
+    "confidence": 96.4,
+    "camera_id": 1,
+    "camera_name": "Camera 1 - Chiman bhai Bridge, Ahmedabad",
+    "frame_index": 9,
+    "timestamp_pts": 1788525747800,
+    "timestamp_utc": "2026-09-04 18:12:27.800",
+    "bbox": {
+      "x": 615,
+      "y": 414,
+      "width": 76,
+      "height": 22
+    },
+    "thumbnail_file": "det_cam1_GJ01ST0007_9.jpg",
+    "is_watchlist_hit": true,
+    "watchlist_info": {
+      "plate_number": "GJ01ST0007",
+      "reason": "CRITICAL: STOLEN VEHICLE (FIR #2026-8812 / Navrangpura PS)",
+      "category": "Stolen",
+      "severity": "CRITICAL",
+      "alert_sound": true,
+      "vehicle_desc": "White Hyundai Creta (2023)",
+      "owner": "Rameshchandra Patel",
+      "origin_district": "Ahmedabad",
+      "date_flagged": "2026-09-02"
+    }
+  },
+  {
+    "id": "DET-GUJ-1-12",
+    "plate_number": "GJ01ST0007",
+    "confidence": 96.4,
+    "camera_id": 1,
+    "camera_name": "Camera 1 - Chiman bhai Bridge, Ahmedabad",
+    "frame_index": 12,
+    "timestamp_pts": 1788525747920,
+    "timestamp_utc": "2026-09-04 18:12:27.920",
+    "bbox": {
+      "x": 617,
+      "y": 422,
+      "width": 79,
+      "height": 23
+    },
+    "thumbnail_file": "det_cam1_GJ01ST0007_12.jpg",
+    "is_watchlist_hit": true,
+    "watchlist_info": {
+      "plate_number": "GJ01ST0007",
+      "reason": "CRITICAL: STOLEN VEHICLE (FIR #2026-8812 / Navrangpura PS)",
+      "category": "Stolen",
+      "severity": "CRITICAL",
+      "alert_sound": true,
+      "vehicle_desc": "White Hyundai Creta (2023)",
+      "owner": "Rameshchandra Patel",
+      "origin_district": "Ahmedabad",
+      "date_flagged": "2026-09-02"
+    }
+  },
+  {
+    "id": "DET-GUJ-1-15",
+    "plate_number": "GJ01ST0007",
+    "confidence": 96.4,
+    "camera_id": 1,
+    "camera_name": "Camera 1 - Chiman bhai Bridge, Ahmedabad",
+    "frame_index": 15,
+    "timestamp_pts": 1788525748040,
+    "timestamp_utc": "2026-09-04 18:12:28.040",
+    "bbox": {
+      "x": 618,
+      "y": 431,
+      "width": 82,
+      "height": 24
+    },
+    "thumbnail_file": "det_cam1_GJ01ST0007_15.jpg",
+    "is_watchlist_hit": true,
+    "watchlist_info": {
+      "plate_number": "GJ01ST0007",
+      "reason": "CRITICAL: STOLEN VEHICLE (FIR #2026-8812 / Navrangpura PS)",
+      "category": "Stolen",
+      "severity": "CRITICAL",
+      "alert_sound": true,
+      "vehicle_desc": "White Hyundai Creta (2023)",
+      "owner": "Rameshchandra Patel",
+      "origin_district": "Ahmedabad",
+      "date_flagged": "2026-09-02"
+    }
+  },
+  {
+    "id": "DET-GUJ-1-18",
+    "plate_number": "GJ01ST0007",
+    "confidence": 96.4,
+    "camera_id": 1,
+    "camera_name": "Camera 1 - Chiman bhai Bridge, Ahmedabad",
+    "frame_index": 18,
+    "timestamp_pts": 1788525748160,
+    "timestamp_utc": "2026-09-04 18:12:28.160",
+    "bbox": {
+      "x": 616,
+      "y": 439,
+      "width": 86,
+      "height": 25
+    },
+    "thumbnail_file": "det_cam1_GJ01ST0007_18.jpg",
+    "is_watchlist_hit": true,
+    "watchlist_info": {
+      "plate_number": "GJ01ST0007",
+      "reason": "CRITICAL: STOLEN VEHICLE (FIR #2026-8812 / Navrangpura PS)",
+      "category": "Stolen",
+      "severity": "CRITICAL",
+      "alert_sound": true,
+      "vehicle_desc": "White Hyundai Creta (2023)",
+      "owner": "Rameshchandra Patel",
+      "origin_district": "Ahmedabad",
+      "date_flagged": "2026-09-02"
+    }
+  },
+  {
+    "id": "DET-GUJ-1-21",
+    "plate_number": "GJ01ST0007",
+    "confidence": 96.4,
+    "camera_id": 1,
+    "camera_name": "Camera 1 - Chiman bhai Bridge, Ahmedabad",
+    "frame_index": 21,
+    "timestamp_pts": 1788525748280,
+    "timestamp_utc": "2026-09-04 18:12:28.280",
+    "bbox": {
+      "x": 612,
+      "y": 449,
+      "width": 89,
+      "height": 26
+    },
+    "thumbnail_file": "det_cam1_GJ01ST0007_21.jpg",
+    "is_watchlist_hit": true,
+    "watchlist_info": {
+      "plate_number": "GJ01ST0007",
+      "reason": "CRITICAL: STOLEN VEHICLE (FIR #2026-8812 / Navrangpura PS)",
+      "category": "Stolen",
+      "severity": "CRITICAL",
+      "alert_sound": true,
+      "vehicle_desc": "White Hyundai Creta (2023)",
+      "owner": "Rameshchandra Patel",
+      "origin_district": "Ahmedabad",
+      "date_flagged": "2026-09-02"
+    }
+  },
+  {
+    "id": "DET-GUJ-1-24",
+    "plate_number": "GJ01ST0007",
+    "confidence": 96.4,
+    "camera_id": 1,
+    "camera_name": "Camera 1 - Chiman bhai Bridge, Ahmedabad",
+    "frame_index": 24,
+    "timestamp_pts": 1788525748400,
+    "timestamp_utc": "2026-09-04 18:12:28.400",
+    "bbox": {
+      "x": 607,
+      "y": 456,
+      "width": 92,
+      "height": 26
+    },
+    "thumbnail_file": "det_cam1_GJ01ST0007_24.jpg",
+    "is_watchlist_hit": true,
+    "watchlist_info": {
+      "plate_number": "GJ01ST0007",
+      "reason": "CRITICAL: STOLEN VEHICLE (FIR #2026-8812 / Navrangpura PS)",
+      "category": "Stolen",
+      "severity": "CRITICAL",
+      "alert_sound": true,
+      "vehicle_desc": "White Hyundai Creta (2023)",
+      "owner": "Rameshchandra Patel",
+      "origin_district": "Ahmedabad",
+      "date_flagged": "2026-09-02"
+    }
+  },
+  {
+    "id": "DET-GUJ-1-27",
+    "plate_number": "GJ01ST0007",
+    "confidence": 96.4,
+    "camera_id": 1,
+    "camera_name": "Camera 1 - Chiman bhai Bridge, Ahmedabad",
+    "frame_index": 27,
+    "timestamp_pts": 1788525748520,
+    "timestamp_utc": "2026-09-04 18:12:28.520",
+    "bbox": {
+      "x": 602,
+      "y": 465,
+      "width": 95,
+      "height": 27
+    },
+    "thumbnail_file": "det_cam1_GJ01ST0007_27.jpg",
+    "is_watchlist_hit": true,
+    "watchlist_info": {
+      "plate_number": "GJ01ST0007",
+      "reason": "CRITICAL: STOLEN VEHICLE (FIR #2026-8812 / Navrangpura PS)",
+      "category": "Stolen",
+      "severity": "CRITICAL",
+      "alert_sound": true,
+      "vehicle_desc": "White Hyundai Creta (2023)",
+      "owner": "Rameshchandra Patel",
+      "origin_district": "Ahmedabad",
+      "date_flagged": "2026-09-02"
+    }
+  },
+  {
+    "id": "DET-GUJ-1-30",
+    "plate_number": "GJ01ST0007",
+    "confidence": 96.4,
+    "camera_id": 1,
+    "camera_name": "Camera 1 - Chiman bhai Bridge, Ahmedabad",
+    "frame_index": 30,
+    "timestamp_pts": 1788525748640,
+    "timestamp_utc": "2026-09-04 18:12:28.640",
+    "bbox": {
+      "x": 594,
+      "y": 474,
+      "width": 99,
+      "height": 28
+    },
+    "thumbnail_file": "det_cam1_GJ01ST0007_30.jpg",
+    "is_watchlist_hit": true,
+    "watchlist_info": {
+      "plate_number": "GJ01ST0007",
+      "reason": "CRITICAL: STOLEN VEHICLE (FIR #2026-8812 / Navrangpura PS)",
+      "category": "Stolen",
+      "severity": "CRITICAL",
+      "alert_sound": true,
+      "vehicle_desc": "White Hyundai Creta (2023)",
+      "owner": "Rameshchandra Patel",
+      "origin_district": "Ahmedabad",
+      "date_flagged": "2026-09-02"
+    }
+  },
+  {
+    "id": "DET-GUJ-1-33",
+    "plate_number": "GJ01ST0007",
+    "confidence": 96.4,
+    "camera_id": 1,
+    "camera_name": "Camera 1 - Chiman bhai Bridge, Ahmedabad",
+    "frame_index": 33,
+    "timestamp_pts": 1788525748760,
+    "timestamp_utc": "2026-09-04 18:12:28.760",
+    "bbox": {
+      "x": 587,
+      "y": 482,
+      "width": 102,
+      "height": 29
+    },
+    "thumbnail_file": "det_cam1_GJ01ST0007_33.jpg",
+    "is_watchlist_hit": true,
+    "watchlist_info": {
+      "plate_number": "GJ01ST0007",
+      "reason": "CRITICAL: STOLEN VEHICLE (FIR #2026-8812 / Navrangpura PS)",
+      "category": "Stolen",
+      "severity": "CRITICAL",
+      "alert_sound": true,
+      "vehicle_desc": "White Hyundai Creta (2023)",
+      "owner": "Rameshchandra Patel",
+      "origin_district": "Ahmedabad",
+      "date_flagged": "2026-09-02"
+    }
+  },
+  {
+    "id": "DET-GUJ-1-36",
+    "plate_number": "GJ01ST0007",
+    "confidence": 96.4,
+    "camera_id": 1,
+    "camera_name": "Camera 1 - Chiman bhai Bridge, Ahmedabad",
+    "frame_index": 36,
+    "timestamp_pts": 1788525748880,
+    "timestamp_utc": "2026-09-04 18:12:28.880",
+    "bbox": {
+      "x": 579,
+      "y": 491,
+      "width": 105,
+      "height": 30
+    },
+    "thumbnail_file": "det_cam1_GJ01ST0007_36.jpg",
+    "is_watchlist_hit": true,
+    "watchlist_info": {
+      "plate_number": "GJ01ST0007",
+      "reason": "CRITICAL: STOLEN VEHICLE (FIR #2026-8812 / Navrangpura PS)",
+      "category": "Stolen",
+      "severity": "CRITICAL",
+      "alert_sound": true,
+      "vehicle_desc": "White Hyundai Creta (2023)",
+      "owner": "Rameshchandra Patel",
+      "origin_district": "Ahmedabad",
+      "date_flagged": "2026-09-02"
+    }
+  },
+  {
+    "id": "DET-GUJ-1-39",
+    "plate_number": "GJ01ST0007",
+    "confidence": 96.4,
+    "camera_id": 1,
+    "camera_name": "Camera 1 - Chiman bhai Bridge, Ahmedabad",
+    "frame_index": 39,
+    "timestamp_pts": 1788525749000,
+    "timestamp_utc": "2026-09-04 18:12:29.000",
+    "bbox": {
+      "x": 573,
+      "y": 499,
+      "width": 108,
+      "height": 31
+    },
+    "thumbnail_file": "det_cam1_GJ01ST0007_39.jpg",
+    "is_watchlist_hit": true,
+    "watchlist_info": {
+      "plate_number": "GJ01ST0007",
+      "reason": "CRITICAL: STOLEN VEHICLE (FIR #2026-8812 / Navrangpura PS)",
+      "category": "Stolen",
+      "severity": "CRITICAL",
+      "alert_sound": true,
+      "vehicle_desc": "White Hyundai Creta (2023)",
+      "owner": "Rameshchandra Patel",
+      "origin_district": "Ahmedabad",
+      "date_flagged": "2026-09-02"
+    }
+  },
+  {
+    "id": "DET-GUJ-1-42",
+    "plate_number": "GJ01ST0007",
+    "confidence": 96.4,
+    "camera_id": 1,
+    "camera_name": "Camera 1 - Chiman bhai Bridge, Ahmedabad",
+    "frame_index": 42,
+    "timestamp_pts": 1788525749120,
+    "timestamp_utc": "2026-09-04 18:12:29.120",
+    "bbox": {
+      "x": 567,
+      "y": 507,
+      "width": 111,
+      "height": 32
+    },
+    "thumbnail_file": "det_cam1_GJ01ST0007_42.jpg",
+    "is_watchlist_hit": true,
+    "watchlist_info": {
+      "plate_number": "GJ01ST0007",
+      "reason": "CRITICAL: STOLEN VEHICLE (FIR #2026-8812 / Navrangpura PS)",
+      "category": "Stolen",
+      "severity": "CRITICAL",
+      "alert_sound": true,
+      "vehicle_desc": "White Hyundai Creta (2023)",
+      "owner": "Rameshchandra Patel",
+      "origin_district": "Ahmedabad",
+      "date_flagged": "2026-09-02"
+    }
+  },
+  {
+    "id": "DET-GUJ-1-45",
+    "plate_number": "GJ01ST0007",
+    "confidence": 96.4,
+    "camera_id": 1,
+    "camera_name": "Camera 1 - Chiman bhai Bridge, Ahmedabad",
+    "frame_index": 45,
+    "timestamp_pts": 1788525749240,
+    "timestamp_utc": "2026-09-04 18:12:29.240",
+    "bbox": {
+      "x": 562,
+      "y": 516,
+      "width": 115,
+      "height": 33
+    },
+    "thumbnail_file": "det_cam1_GJ01ST0007_45.jpg",
+    "is_watchlist_hit": true,
+    "watchlist_info": {
+      "plate_number": "GJ01ST0007",
+      "reason": "CRITICAL: STOLEN VEHICLE (FIR #2026-8812 / Navrangpura PS)",
+      "category": "Stolen",
+      "severity": "CRITICAL",
+      "alert_sound": true,
+      "vehicle_desc": "White Hyundai Creta (2023)",
+      "owner": "Rameshchandra Patel",
+      "origin_district": "Ahmedabad",
+      "date_flagged": "2026-09-02"
+    }
+  },
+  {
+    "id": "DET-GUJ-1-48",
+    "plate_number": "GJ01ST0007",
+    "confidence": 96.4,
+    "camera_id": 1,
+    "camera_name": "Camera 1 - Chiman bhai Bridge, Ahmedabad",
+    "frame_index": 48,
+    "timestamp_pts": 1788525749360,
+    "timestamp_utc": "2026-09-04 18:12:29.360",
+    "bbox": {
+      "x": 560,
+      "y": 524,
+      "width": 118,
+      "height": 34
+    },
+    "thumbnail_file": "det_cam1_GJ01ST0007_48.jpg",
+    "is_watchlist_hit": true,
+    "watchlist_info": {
+      "plate_number": "GJ01ST0007",
+      "reason": "CRITICAL: STOLEN VEHICLE (FIR #2026-8812 / Navrangpura PS)",
+      "category": "Stolen",
+      "severity": "CRITICAL",
+      "alert_sound": true,
+      "vehicle_desc": "White Hyundai Creta (2023)",
+      "owner": "Rameshchandra Patel",
+      "origin_district": "Ahmedabad",
+      "date_flagged": "2026-09-02"
+    }
+  },
+  {
+    "id": "DET-GUJ-1-51",
+    "plate_number": "GJ01ST0007",
+    "confidence": 96.4,
+    "camera_id": 1,
+    "camera_name": "Camera 1 - Chiman bhai Bridge, Ahmedabad",
+    "frame_index": 51,
+    "timestamp_pts": 1788525749480,
+    "timestamp_utc": "2026-09-04 18:12:29.480",
+    "bbox": {
+      "x": 559,
+      "y": 534,
+      "width": 121,
+      "height": 35
+    },
+    "thumbnail_file": "det_cam1_GJ01ST0007_51.jpg",
+    "is_watchlist_hit": true,
+    "watchlist_info": {
+      "plate_number": "GJ01ST0007",
+      "reason": "CRITICAL: STOLEN VEHICLE (FIR #2026-8812 / Navrangpura PS)",
+      "category": "Stolen",
+      "severity": "CRITICAL",
+      "alert_sound": true,
+      "vehicle_desc": "White Hyundai Creta (2023)",
+      "owner": "Rameshchandra Patel",
+      "origin_district": "Ahmedabad",
+      "date_flagged": "2026-09-02"
+    }
+  },
+  {
+    "id": "DET-GUJ-1-54",
+    "plate_number": "GJ01ST0007",
+    "confidence": 96.4,
+    "camera_id": 1,
+    "camera_name": "Camera 1 - Chiman bhai Bridge, Ahmedabad",
+    "frame_index": 54,
+    "timestamp_pts": 1788525749600,
+    "timestamp_utc": "2026-09-04 18:12:29.600",
+    "bbox": {
+      "x": 560,
+      "y": 542,
+      "width": 124,
+      "height": 36
+    },
+    "thumbnail_file": "det_cam1_GJ01ST0007_54.jpg",
+    "is_watchlist_hit": true,
+    "watchlist_info": {
+      "plate_number": "GJ01ST0007",
+      "reason": "CRITICAL: STOLEN VEHICLE (FIR #2026-8812 / Navrangpura PS)",
+      "category": "Stolen",
+      "severity": "CRITICAL",
+      "alert_sound": true,
+      "vehicle_desc": "White Hyundai Creta (2023)",
+      "owner": "Rameshchandra Patel",
+      "origin_district": "Ahmedabad",
+      "date_flagged": "2026-09-02"
+    }
+  },
+  {
+    "id": "DET-GUJ-1-57",
+    "plate_number": "GJ01ST0007",
+    "confidence": 96.4,
+    "camera_id": 1,
+    "camera_name": "Camera 1 - Chiman bhai Bridge, Ahmedabad",
+    "frame_index": 57,
+    "timestamp_pts": 1788525749720,
+    "timestamp_utc": "2026-09-04 18:12:29.720",
+    "bbox": {
+      "x": 562,
+      "y": 550,
+      "width": 128,
+      "height": 37
+    },
+    "thumbnail_file": "det_cam1_GJ01ST0007_57.jpg",
+    "is_watchlist_hit": true,
+    "watchlist_info": {
+      "plate_number": "GJ01ST0007",
+      "reason": "CRITICAL: STOLEN VEHICLE (FIR #2026-8812 / Navrangpura PS)",
+      "category": "Stolen",
+      "severity": "CRITICAL",
+      "alert_sound": true,
+      "vehicle_desc": "White Hyundai Creta (2023)",
+      "owner": "Rameshchandra Patel",
+      "origin_district": "Ahmedabad",
+      "date_flagged": "2026-09-02"
+    }
+  },
+  {
+    "id": "DET-GUJ-1-60",
+    "plate_number": "GJ01ST0007",
+    "confidence": 96.4,
+    "camera_id": 1,
+    "camera_name": "Camera 1 - Chiman bhai Bridge, Ahmedabad",
+    "frame_index": 60,
+    "timestamp_pts": 1788525749840,
+    "timestamp_utc": "2026-09-04 18:12:29.840",
+    "bbox": {
+      "x": 566,
+      "y": 559,
+      "width": 131,
+      "height": 37
+    },
+    "thumbnail_file": "det_cam1_GJ01ST0007_60.jpg",
+    "is_watchlist_hit": true,
+    "watchlist_info": {
+      "plate_number": "GJ01ST0007",
+      "reason": "CRITICAL: STOLEN VEHICLE (FIR #2026-8812 / Navrangpura PS)",
+      "category": "Stolen",
+      "severity": "CRITICAL",
+      "alert_sound": true,
+      "vehicle_desc": "White Hyundai Creta (2023)",
+      "owner": "Rameshchandra Patel",
+      "origin_district": "Ahmedabad",
+      "date_flagged": "2026-09-02"
+    }
+  },
+  {
+    "id": "DET-GUJ-1-63",
+    "plate_number": "GJ01ST0007",
+    "confidence": 96.4,
+    "camera_id": 1,
+    "camera_name": "Camera 1 - Chiman bhai Bridge, Ahmedabad",
+    "frame_index": 63,
+    "timestamp_pts": 1788525749960,
+    "timestamp_utc": "2026-09-04 18:12:29.960",
+    "bbox": {
+      "x": 570,
+      "y": 567,
+      "width": 134,
+      "height": 38
+    },
+    "thumbnail_file": "det_cam1_GJ01ST0007_63.jpg",
+    "is_watchlist_hit": true,
+    "watchlist_info": {
+      "plate_number": "GJ01ST0007",
+      "reason": "CRITICAL: STOLEN VEHICLE (FIR #2026-8812 / Navrangpura PS)",
+      "category": "Stolen",
+      "severity": "CRITICAL",
+      "alert_sound": true,
+      "vehicle_desc": "White Hyundai Creta (2023)",
+      "owner": "Rameshchandra Patel",
+      "origin_district": "Ahmedabad",
+      "date_flagged": "2026-09-02"
+    }
+  },
+  {
+    "id": "DET-GUJ-1-66",
+    "plate_number": "GJ01ST0007",
+    "confidence": 96.4,
+    "camera_id": 1,
+    "camera_name": "Camera 1 - Chiman bhai Bridge, Ahmedabad",
+    "frame_index": 66,
+    "timestamp_pts": 1788525750080,
+    "timestamp_utc": "2026-09-04 18:12:30.080",
+    "bbox": {
+      "x": 575,
+      "y": 576,
+      "width": 137,
+      "height": 39
+    },
+    "thumbnail_file": "det_cam1_GJ01ST0007_66.jpg",
+    "is_watchlist_hit": true,
+    "watchlist_info": {
+      "plate_number": "GJ01ST0007",
+      "reason": "CRITICAL: STOLEN VEHICLE (FIR #2026-8812 / Navrangpura PS)",
+      "category": "Stolen",
+      "severity": "CRITICAL",
+      "alert_sound": true,
+      "vehicle_desc": "White Hyundai Creta (2023)",
+      "owner": "Rameshchandra Patel",
+      "origin_district": "Ahmedabad",
+      "date_flagged": "2026-09-02"
+    }
+  },
+  {
+    "id": "DET-GUJ-1-69",
+    "plate_number": "GJ01ST0007",
+    "confidence": 96.4,
+    "camera_id": 1,
+    "camera_name": "Camera 1 - Chiman bhai Bridge, Ahmedabad",
+    "frame_index": 69,
+    "timestamp_pts": 1788525750200,
+    "timestamp_utc": "2026-09-04 18:12:30.200",
+    "bbox": {
+      "x": 578,
+      "y": 584,
+      "width": 141,
+      "height": 40
+    },
+    "thumbnail_file": "det_cam1_GJ01ST0007_69.jpg",
+    "is_watchlist_hit": true,
+    "watchlist_info": {
+      "plate_number": "GJ01ST0007",
+      "reason": "CRITICAL: STOLEN VEHICLE (FIR #2026-8812 / Navrangpura PS)",
+      "category": "Stolen",
+      "severity": "CRITICAL",
+      "alert_sound": true,
+      "vehicle_desc": "White Hyundai Creta (2023)",
+      "owner": "Rameshchandra Patel",
+      "origin_district": "Ahmedabad",
+      "date_flagged": "2026-09-02"
+    }
+  },
+  {
+    "id": "DET-GUJ-1-72",
+    "plate_number": "GJ01ST0007",
+    "confidence": 96.4,
+    "camera_id": 1,
+    "camera_name": "Camera 1 - Chiman bhai Bridge, Ahmedabad",
+    "frame_index": 72,
+    "timestamp_pts": 1788525750320,
+    "timestamp_utc": "2026-09-04 18:12:30.320",
+    "bbox": {
+      "x": 582,
+      "y": 592,
+      "width": 144,
+      "height": 41
+    },
+    "thumbnail_file": "det_cam1_GJ01ST0007_72.jpg",
+    "is_watchlist_hit": true,
+    "watchlist_info": {
+      "plate_number": "GJ01ST0007",
+      "reason": "CRITICAL: STOLEN VEHICLE (FIR #2026-8812 / Navrangpura PS)",
+      "category": "Stolen",
+      "severity": "CRITICAL",
+      "alert_sound": true,
+      "vehicle_desc": "White Hyundai Creta (2023)",
+      "owner": "Rameshchandra Patel",
+      "origin_district": "Ahmedabad",
+      "date_flagged": "2026-09-02"
+    }
+  },
+  {
+    "id": "DET-GUJ-1-75",
+    "plate_number": "GJ01ST0007",
+    "confidence": 96.4,
+    "camera_id": 1,
+    "camera_name": "Camera 1 - Chiman bhai Bridge, Ahmedabad",
+    "frame_index": 75,
+    "timestamp_pts": 1788525750440,
+    "timestamp_utc": "2026-09-04 18:12:30.440",
+    "bbox": {
+      "x": 583,
+      "y": 601,
+      "width": 147,
+      "height": 42
+    },
+    "thumbnail_file": "det_cam1_GJ01ST0007_75.jpg",
+    "is_watchlist_hit": true,
+    "watchlist_info": {
+      "plate_number": "GJ01ST0007",
+      "reason": "CRITICAL: STOLEN VEHICLE (FIR #2026-8812 / Navrangpura PS)",
+      "category": "Stolen",
+      "severity": "CRITICAL",
+      "alert_sound": true,
+      "vehicle_desc": "White Hyundai Creta (2023)",
+      "owner": "Rameshchandra Patel",
+      "origin_district": "Ahmedabad",
+      "date_flagged": "2026-09-02"
+    }
+  },
+  {
+    "id": "DET-GUJ-1-78",
+    "plate_number": "GJ01ST0007",
+    "confidence": 96.4,
+    "camera_id": 1,
+    "camera_name": "Camera 1 - Chiman bhai Bridge, Ahmedabad",
+    "frame_index": 78,
+    "timestamp_pts": 1788525750560,
+    "timestamp_utc": "2026-09-04 18:12:30.560",
+    "bbox": {
+      "x": 584,
+      "y": 610,
+      "width": 150,
+      "height": 43
+    },
+    "thumbnail_file": "det_cam1_GJ01ST0007_78.jpg",
+    "is_watchlist_hit": true,
+    "watchlist_info": {
+      "plate_number": "GJ01ST0007",
+      "reason": "CRITICAL: STOLEN VEHICLE (FIR #2026-8812 / Navrangpura PS)",
+      "category": "Stolen",
+      "severity": "CRITICAL",
+      "alert_sound": true,
+      "vehicle_desc": "White Hyundai Creta (2023)",
+      "owner": "Rameshchandra Patel",
+      "origin_district": "Ahmedabad",
+      "date_flagged": "2026-09-02"
+    }
+  },
+  {
+    "id": "DET-GUJ-1-81",
+    "plate_number": "GJ01ST0007",
+    "confidence": 96.4,
+    "camera_id": 1,
+    "camera_name": "Camera 1 - Chiman bhai Bridge, Ahmedabad",
+    "frame_index": 81,
+    "timestamp_pts": 1788525750680,
+    "timestamp_utc": "2026-09-04 18:12:30.680",
+    "bbox": {
+      "x": 582,
+      "y": 618,
+      "width": 153,
+      "height": 44
+    },
+    "thumbnail_file": "det_cam1_GJ01ST0007_81.jpg",
+    "is_watchlist_hit": true,
+    "watchlist_info": {
+      "plate_number": "GJ01ST0007",
+      "reason": "CRITICAL: STOLEN VEHICLE (FIR #2026-8812 / Navrangpura PS)",
+      "category": "Stolen",
+      "severity": "CRITICAL",
+      "alert_sound": true,
+      "vehicle_desc": "White Hyundai Creta (2023)",
+      "owner": "Rameshchandra Patel",
+      "origin_district": "Ahmedabad",
+      "date_flagged": "2026-09-02"
+    }
+  },
+  {
+    "id": "DET-GUJ-1-84",
+    "plate_number": "GJ01ST0007",
+    "confidence": 96.4,
+    "camera_id": 1,
+    "camera_name": "Camera 1 - Chiman bhai Bridge, Ahmedabad",
+    "frame_index": 84,
+    "timestamp_pts": 1788525750800,
+    "timestamp_utc": "2026-09-04 18:12:30.800",
+    "bbox": {
+      "x": 579,
+      "y": 627,
+      "width": 157,
+      "height": 45
+    },
+    "thumbnail_file": "det_cam1_GJ01ST0007_84.jpg",
+    "is_watchlist_hit": true,
+    "watchlist_info": {
+      "plate_number": "GJ01ST0007",
+      "reason": "CRITICAL: STOLEN VEHICLE (FIR #2026-8812 / Navrangpura PS)",
+      "category": "Stolen",
+      "severity": "CRITICAL",
+      "alert_sound": true,
+      "vehicle_desc": "White Hyundai Creta (2023)",
+      "owner": "Rameshchandra Patel",
+      "origin_district": "Ahmedabad",
+      "date_flagged": "2026-09-02"
+    }
+  },
+  {
+    "id": "DET-GUJ-1-87",
+    "plate_number": "GJ01ST0007",
+    "confidence": 96.4,
+    "camera_id": 1,
+    "camera_name": "Camera 1 - Chiman bhai Bridge, Ahmedabad",
+    "frame_index": 87,
+    "timestamp_pts": 1788525750920,
+    "timestamp_utc": "2026-09-04 18:12:30.920",
+    "bbox": {
+      "x": 573,
+      "y": 635,
+      "width": 160,
+      "height": 46
+    },
+    "thumbnail_file": "det_cam1_GJ01ST0007_87.jpg",
+    "is_watchlist_hit": true,
+    "watchlist_info": {
+      "plate_number": "GJ01ST0007",
+      "reason": "CRITICAL: STOLEN VEHICLE (FIR #2026-8812 / Navrangpura PS)",
+      "category": "Stolen",
+      "severity": "CRITICAL",
+      "alert_sound": true,
+      "vehicle_desc": "White Hyundai Creta (2023)",
+      "owner": "Rameshchandra Patel",
+      "origin_district": "Ahmedabad",
+      "date_flagged": "2026-09-02"
+    }
+  },
+  {
+    "id": "DET-GUJ-1-90",
+    "plate_number": "GJ01ST0007",
+    "confidence": 96.4,
+    "camera_id": 1,
+    "camera_name": "Camera 1 - Chiman bhai Bridge, Ahmedabad",
+    "frame_index": 90,
+    "timestamp_pts": 1788525751040,
+    "timestamp_utc": "2026-09-04 18:12:31.040",
+    "bbox": {
+      "x": 567,
+      "y": 644,
+      "width": 163,
+      "height": 47
+    },
+    "thumbnail_file": "det_cam1_GJ01ST0007_90.jpg",
+    "is_watchlist_hit": true,
+    "watchlist_info": {
+      "plate_number": "GJ01ST0007",
+      "reason": "CRITICAL: STOLEN VEHICLE (FIR #2026-8812 / Navrangpura PS)",
+      "category": "Stolen",
+      "severity": "CRITICAL",
+      "alert_sound": true,
+      "vehicle_desc": "White Hyundai Creta (2023)",
+      "owner": "Rameshchandra Patel",
+      "origin_district": "Ahmedabad",
+      "date_flagged": "2026-09-02"
+    }
+  },
+  {
+    "id": "DET-GUJ-1-93",
+    "plate_number": "GJ01ST0007",
+    "confidence": 96.4,
+    "camera_id": 1,
+    "camera_name": "Camera 1 - Chiman bhai Bridge, Ahmedabad",
+    "frame_index": 93,
+    "timestamp_pts": 1788525751160,
+    "timestamp_utc": "2026-09-04 18:12:31.160",
+    "bbox": {
+      "x": 560,
+      "y": 652,
+      "width": 166,
+      "height": 47
+    },
+    "thumbnail_file": "det_cam1_GJ01ST0007_93.jpg",
+    "is_watchlist_hit": true,
+    "watchlist_info": {
+      "plate_number": "GJ01ST0007",
+      "reason": "CRITICAL: STOLEN VEHICLE (FIR #2026-8812 / Navrangpura PS)",
+      "category": "Stolen",
+      "severity": "CRITICAL",
+      "alert_sound": true,
+      "vehicle_desc": "White Hyundai Creta (2023)",
+      "owner": "Rameshchandra Patel",
+      "origin_district": "Ahmedabad",
+      "date_flagged": "2026-09-02"
+    }
+  }
+]

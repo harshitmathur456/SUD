@@ -1,0 +1,31 @@
+id,number,name,location,codec,live,width,height,fps,bitrate_kbps,bits_per_pixel,rtsp_url,webrtc_url,hls_live_url
+1,1,Camera 1,01 Chiman bhai Bridge,,True,0,0,0.0,0,0.0,rtsp://live.corp8.cloud:8554/stream/1,http://live.corp8.cloud:8889/stream/1/whep,/live/stream/1/index.m3u8
+2,2,Camera 2,02 Janpath,,True,0,0,0.0,0,0.0,rtsp://live.corp8.cloud:8554/stream/2,http://live.corp8.cloud:8889/stream/2/whep,/live/stream/2/index.m3u8
+3,3,Camera 3,03 O.N.G.C. Office,,True,0,0,0.0,0,0.0,rtsp://live.corp8.cloud:8554/stream/3,http://live.corp8.cloud:8889/stream/3/whep,/live/stream/3/index.m3u8
+4,4,Camera 4,04 Paldi Circle,,True,0,0,0.0,0,0.0,rtsp://live.corp8.cloud:8554/stream/4,http://live.corp8.cloud:8889/stream/4/whep,/live/stream/4/index.m3u8
+5,5,Camera 5,05 Visat teen Rasta,,True,0,0,0.0,0,0.0,rtsp://live.corp8.cloud:8554/stream/5,http://live.corp8.cloud:8889/stream/5/whep,/live/stream/5/index.m3u8
+6,6,Camera 6,06 Timbavadi gate-Junagadh,hevc,True,1920,1080,25.0,1923,0.0371,rtsp://live.corp8.cloud:8554/stream/6,http://live.corp8.cloud:8889/stream/6/whep,/live/stream/6/index.m3u8
+7,7,Camera 7,07 hero-showroom-gir-somnath,,True,0,0,0.0,0,0.0,rtsp://live.corp8.cloud:8554/stream/7,http://live.corp8.cloud:8889/stream/7/whep,/live/stream/7/index.m3u8
+8,8,Camera 8,08 majewadi-gate-junagadh,,True,0,0,0.0,0,0.0,rtsp://live.corp8.cloud:8554/stream/8,http://live.corp8.cloud:8889/stream/8/whep,/live/stream/8/index.m3u8
+9,9,Camera 9,09 new-bypass-near-by-circle-junagadh-2,,True,0,0,0.0,0,0.0,rtsp://live.corp8.cloud:8554/stream/9,http://live.corp8.cloud:8889/stream/9/whep,/live/stream/9/index.m3u8
+10,10,Camera 10,10 char-chowk-road-2-junagadh,,True,0,0,0.0,0,0.0,rtsp://live.corp8.cloud:8554/stream/10,http://live.corp8.cloud:8889/stream/10/whep,/live/stream/10/index.m3u8
+11,11,Camera 11,11 dolatpara-junagadh,,True,0,0,0.0,0,0.0,rtsp://live.corp8.cloud:8554/stream/11,http://live.corp8.cloud:8889/stream/11/whep,/live/stream/11/index.m3u8
+12,12,Camera 12,12 Tri Mandir Adalaj Tollnaka,,True,0,0,0.0,0,0.0,rtsp://live.corp8.cloud:8554/stream/12,http://live.corp8.cloud:8889/stream/12/whep,/live/stream/12/index.m3u8
+13,13,Camera 13,13 CN Vidhyalaya,h264,True,1920,1080,12.5,902,0.0348,rtsp://live.corp8.cloud:8554/stream/13,http://live.corp8.cloud:8889/stream/13/whep,/live/stream/13/index.m3u8
+14,14,Camera 14,14 Delight,h264,True,1920,1080,12.5,980,0.0378,rtsp://live.corp8.cloud:8554/stream/14,http://live.corp8.cloud:8889/stream/14/whep,/live/stream/14/index.m3u8
+15,15,Camera 15,15 Suvidha park,h264,True,1920,1080,12.5,690,0.0266,rtsp://live.corp8.cloud:8554/stream/15,http://live.corp8.cloud:8889/stream/15/whep,/live/stream/15/index.m3u8
+16,16,Camera 16,16 Visat P2,h264,True,1920,1080,12.5,961,0.0371,rtsp://live.corp8.cloud:8554/stream/16,http://live.corp8.cloud:8889/stream/16/whep,/live/stream/16/index.m3u8
+17,17,Camera 17,17 Rajkot Bus Port CCTV,hevc,True,1920,1080,24.98,671,0.0129,rtsp://live.corp8.cloud:8554/stream/17,http://live.corp8.cloud:8889/stream/17/whep,/live/stream/17/index.m3u8
+18,18,Camera 18,18 Rajkot CCTV,,True,0,0,0.0,0,0.0,rtsp://live.corp8.cloud:8554/stream/18,http://live.corp8.cloud:8889/stream/18/whep,/live/stream/18/index.m3u8
+19,19,Camera 19,"19 KHAPARIA GRAM PANCHAYAT , TALUKA GANDEVI, DISTRICT NAVSARI",,True,0,0,0.0,0,0.0,rtsp://live.corp8.cloud:8554/stream/19,http://live.corp8.cloud:8889/stream/19/whep,/live/stream/19/index.m3u8
+20,20,Camera 20,20 Mohanpura,,True,0,0,0.0,0,0.0,rtsp://live.corp8.cloud:8554/stream/20,http://live.corp8.cloud:8889/stream/20/whep,/live/stream/20/index.m3u8
+21,21,Camera 21,23 Patan Dethali Char Rasta,,True,0,0,0.0,0,0.0,rtsp://live.corp8.cloud:8554/stream/21,http://live.corp8.cloud:8889/stream/21/whep,/live/stream/21/index.m3u8
+22,22,Camera 22,28 BK Mervada tran Rasta,hevc,True,1920,1080,25.0,2091,0.0403,rtsp://live.corp8.cloud:8554/stream/22,http://live.corp8.cloud:8889/stream/22/whep,/live/stream/22/index.m3u8
+23,23,Camera 23,30 kheram,h264,True,1280,720,25.0,4001,0.1737,rtsp://live.corp8.cloud:8554/stream/23,http://live.corp8.cloud:8889/stream/23/whep,/live/stream/23/index.m3u8
+24,24,Camera 24,33 dehgam,,True,0,0,0.0,0,0.0,rtsp://live.corp8.cloud:8554/stream/24,http://live.corp8.cloud:8889/stream/24/whep,/live/stream/24/index.m3u8
+25,25,Camera 25,34 dhanori,,True,0,0,0.0,0,0.0,rtsp://live.corp8.cloud:8554/stream/25,http://live.corp8.cloud:8889/stream/25/whep,/live/stream/25/index.m3u8
+26,26,Camera 26,35 TANKAL,hevc,True,2560,1440,13.35,2411,0.049,rtsp://live.corp8.cloud:8554/stream/26,http://live.corp8.cloud:8889/stream/26/whep,/live/stream/26/index.m3u8
+27,27,Camera 27,36 bilimora,h264,True,1280,960,24.86,1112,0.0364,rtsp://live.corp8.cloud:8554/stream/27,http://live.corp8.cloud:8889/stream/27/whep,/live/stream/27/index.m3u8
+28,28,Camera 28,37 bilimora,,True,0,0,0.0,0,0.0,rtsp://live.corp8.cloud:8554/stream/28,http://live.corp8.cloud:8889/stream/28/whep,/live/stream/28/index.m3u8
+29,29,Camera 29,38 bilimora,h264,True,1280,960,24.78,907,0.0298,rtsp://live.corp8.cloud:8554/stream/29,http://live.corp8.cloud:8889/stream/29/whep,/live/stream/29/index.m3u8
+30,30,Camera 30,Gandhidham Rambaugh p2,,True,0,0,0.0,0,0.0,rtsp://live.corp8.cloud:8554/stream/30,http://live.corp8.cloud:8889/stream/30/whep,/live/stream/30/index.m3u8

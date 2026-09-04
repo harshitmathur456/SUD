@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sentinel Unified Grid — Gujarat CCTV & Vehicle Intelligence Platform</title>
+  
+  <!-- FontAwesome Icons & Surveillance Styling -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="/src/styles/main.css">
+  <!-- HLS.js Live Stream Client (PRD 3 & P0 3) -->
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+</head>
+<body>
+  <div id="app">
+    <!-- TOP COMMAND HEADER -->
+    <header class="command-header">
+      <div class="brand-section">
+        <div class="brand-badge">
+          <i class="fas fa-shield-halved shield-icon"></i>
+          <div>
+            <span class="brand-title">SENTINEL UNIFIED GRID</span>
+          </div>
+        </div>
+        <span class="brand-tag">Gujarat Police • Innovation Hackathon 2026</span>
+      </div>
+
+      <div class="header-status-metrics">
+        <div class="metric-pill" title="Active CCTV nodes across Gujarat sandbox">
+          <span class="dot online"></span>
+          <span>CCTV NODES: <strong>30 ONLINE</strong></span>
+        </div>
+        <div class="metric-pill" title="313 real police stations across 20 districts">
+          <span class="dot" style="background: var(--accent-blue);"></span>
+          <span>POLICE GRID: <strong>313 STATIONS</strong></span>
+        </div>
+        <div class="metric-pill" title="Active watchlist targets">
+          <span class="dot alert"></span>
+          <span>WATCHLIST: <strong>3 TARGETS</strong></span>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <button id="btn-screen-record" class="btn-header" style="background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.4); color: #fca5a5;" title="Record 1080p Screen Demo Video for Hackathon Submission (P0 Item 5)">
+          <i class="fas fa-circle-dot" id="rec-dot-icon" style="color: #ef4444;"></i>
+          <span id="record-btn-text">Record Demo Video</span>
+        </button>
+        <button id="btn-scan-all-cameras" class="btn-header accent" title="Access all 30 CCTV cameras and extract vehicle plates across Gujarat">
+          <i class="fas fa-satellite-dish"></i>
+          <span>Scan & Ingest All Cameras</span>
+        </button>
+        <button id="btn-recenter-gujarat" class="btn-header" title="Reset view to full State of Gujarat">
+          <i class="fas fa-crosshairs"></i>
+          <span>Center Gujarat</span>
+        </button>
+        <button id="btn-trigger-alert" class="btn-header danger" title="Simulate real-time watchlist match and auto-dispatch">
+          <i class="fas fa-triangle-exclamation"></i>
+          <span>Simulate Live Alert</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- MAIN WORKSPACE -->
+    <main class="main-workspace">
+      <!-- SIDEBAR CONTROL PANEL -->
+      <aside id="sidebar-panel" class="sidebar-panel">
+        <div class="sidebar-header">
+          <nav class="tab-navigation">
+            <button class="tab-btn active" data-tab="search" title="Vehicle ANPR Search & Route Reconstruction">
+              <i class="fas fa-car-rear"></i> Search
+            </button>
+            <button class="tab-btn" data-tab="cameras" title="Camera Fleet Directory">
+              <i class="fas fa-video"></i> Cameras
+            </button>
+            <button class="tab-btn" data-tab="stations" title="Gujarat Police Stations">
+              <i class="fas fa-building-shield"></i> Stations
+            </button>
+            <button class="tab-btn" data-tab="watchlist" title="Active Watchlist">
+              <i class="fas fa-bell"></i> Watchlist
+            </button>
+          </nav>
+          <button id="btn-toggle-sidebar" class="btn-icon-collapse" title="Collapse / Expand Panel">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+        </div>
+
+        <div class="sidebar-body">
+          <!-- TAB 1: VEHICLE SEARCH & ROUTE RECONSTRUCTION -->
+          <div id="tab-search" class="tab-content active">
+            <div class="hud-card">
+              <div class="hud-card-header">
+                <span class="hud-card-title"><i class="fas fa-magnifying-glass"></i> ANPR Plate Search</span>
+                <span id="grid-storage-badge" class="hud-badge">PTS SYNCED</span>
+              </div>
+              <div class="search-box-wrapper">
+                <div class="search-input-group">
+                  <i class="fas fa-search search-icon"></i>
+                  <input type="text" id="anpr-search-input" class="anpr-search-input" placeholder="Enter Registration No. (e.g. GJ01AB1234)" value="GJ01AB1234" autocomplete="off">
+                  <button id="btn-search-anpr" class="btn-search-exec">TRACE</button>
+                </div>
+                <div id="anpr-suggestions-list" class="anpr-suggestions-list" style="display: none;"></div>
+                <div id="fuzzy-hint-banner" class="fuzzy-hint-banner" style="display: none;"></div>
+                
+                <div style="display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: var(--text-muted); margin-top: 4px;">
+                  <span>Quick Evaluation Vehicles:</span>
+                  <span id="grid-plates-indexed-badge" class="hud-badge" style="color: var(--accent-emerald);">GRID INDEXED</span>
+                </div>
+                <div class="quick-pick-chips">
+                  <button class="chip-vehicle" data-plate="GJ01AB1234" title="Ahmedabad Urban Corridor Route (8 Cameras)">GJ01AB1234 (Ahmedabad - 8 Cams)</button>
+                  <button class="chip-vehicle" data-plate="GJ11CD9876" title="Junagadh Sector Route (5 Cameras)">GJ11CD9876 (Junagadh - 5 Cams)</button>
+                  <button class="chip-vehicle" data-plate="GJ21EF4521" title="Navsari & Bilimora Highway (7 Cameras)">GJ21EF4521 (Navsari - 7 Cams)</button>
+                  <button class="chip-vehicle" data-plate="GJ05WL9999" title="Watchlist Target - Contraband Thar (3 Cameras)">GJ05WL9999 (Watchlist Thar)</button>
+                  <button class="chip-vehicle" data-plate="GJ03GH3322" title="Rajkot Transit Route (2 Cameras)">GJ03GH3322 (Rajkot)</button>
+                  <button class="chip-vehicle" data-plate="GJO1AB1234" title="Test OCR Typo Tolerance (Letter O instead of Zero)">GJO1AB1234 (Fuzzy Test)</button>
+                </div>
+
+                <!-- Custom Test Video Ingestion & Forensic Export Actions -->
+                <div style="margin-top: 10px; display: flex; gap: 8px;">
+                  <button id="btn-open-video-anpr" class="btn-header accent" style="flex: 1; justify-content: center; font-size: 11px; padding: 7px 10px;" title="Upload or ingest any video file to run ANPR detection (P0 Item 1)">
+                    <i class="fas fa-file-video"></i> Ingest Test Video
+                  </button>
+                  <input type="file" id="video-file-input" accept="video/mp4,video/webm,video/ogg" style="display:none;">
+                  <button id="btn-export-dossier" class="btn-header" style="justify-content: center; font-size: 11px; padding: 7px 10px;" title="Export forensic evidence dossier (JSON & CSV)">
+                    <i class="fas fa-file-arrow-down"></i> Export Dossier
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Vehicle Summary Container -->
+            <div id="vehicle-summary-container"></div>
+
+            <!-- CCTV Evidence Footage Visualizer Card -->
+            <div id="cctv-footage-card" class="hud-card" style="display: none; padding-bottom: 8px;">
+              <div class="hud-card-header">
+                <span class="hud-card-title"><i class="fas fa-video"></i> CCTV Footage Evidence</span>
+                <span id="footage-hop-label" class="hud-badge" style="background: rgba(16, 185, 129, 0.2); color: #6ee7b7;">HOP #1 EVIDENCE</span>
+              </div>
+              <div class="cctv-canvas-wrapper" style="position: relative; width: 100%; border-radius: 8px; overflow: hidden; background: #000; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
+                <canvas id="cctv-evidence-canvas" width="360" height="200" style="width: 100%; display: block;"></canvas>
+              </div>
+              <div class="footage-telemetry-row" style="display: flex; justify-content: space-between; align-items: center; margin-top: 8px; font-size: 11px; color: var(--text-muted); font-family: var(--font-mono);">
+                <span id="footage-cam-label"><i class="fas fa-camera"></i> Camera 1 — Chiman bhai Bridge</span>
+                <span id="footage-pts-label" style="color: var(--accent-cyan);">PTS: 1725437415000</span>
+              </div>
+            </div>
+
+            <!-- Timeline Container -->
+            <div class="hud-card" style="padding-bottom: 8px;">
+              <div class="hud-card-header">
+                <span class="hud-card-title"><i class="fas fa-clock-rotate-left"></i> Multi-Camera Timeline</span>
+                <span class="hud-badge">EVIDENCE BUFFER</span>
+              </div>
+              <div id="detection-timeline-container"></div>
+            </div>
+          </div>
+
+          <!-- TAB 2: CAMERAS DIRECTORY -->
+          <div id="tab-cameras" class="tab-content">
+            <div class="list-filter-bar">
+              <input type="text" id="camera-search-input" class="filter-input" placeholder="Filter by camera name or city...">
+              <select id="camera-status-filter" class="filter-select">
+                <option value="all">All Status (30)</option>
+                <option value="live">🟢 Live Only</option>
+                <option value="degraded">🟡 Degraded</option>
+              </select>
+            </div>
+            <div id="cameras-scroll-list" class="item-scroll-list"></div>
+          </div>
+
+          <!-- TAB 3: POLICE STATIONS DIRECTORY -->
+          <div id="tab-stations" class="tab-content">
+            <div class="list-filter-bar">
+              <input type="text" id="station-search-input" class="filter-input" placeholder="Search police station or area...">
+              <select id="station-district-filter" class="filter-select">
+                <option value="all">All Districts (20)</option>
+              </select>
+            </div>
+            <div id="stations-scroll-list" class="item-scroll-list"></div>
+          </div>
+
+          <!-- TAB 4: WATCHLIST & ALERTS -->
+          <div id="tab-watchlist" class="tab-content">
+            <div class="hud-card">
+              <div class="hud-card-header">
+                <span class="hud-card-title"><i class="fas fa-shield-virus"></i> Active Watchlist</span>
+                <span class="hud-badge" style="background: rgba(244,63,94,0.2); color:#fda4af;">CRITICAL POOL</span>
+              </div>
+              <p style="font-size: 11px; color: var(--text-secondary); margin-bottom: 10px;">
+                Vehicles flagged for auto-interception across Gujarat CCTV grid. Watchlist matches trigger instant nearest police station dispatch.
+              </p>
+              <div id="watchlist-scroll-list" class="item-scroll-list"></div>
+            </div>
+
+            <!-- Add Target to Watchlist Form (P0 Item 2) -->
+            <div class="hud-card" style="margin-top: 12px; border-color: rgba(244, 63, 94, 0.35);">
+              <div class="hud-card-header">
+                <span class="hud-card-title"><i class="fas fa-plus-circle" style="color: var(--accent-rose);"></i> Add Watchlist Target</span>
+                <span class="hud-badge" style="background: rgba(244, 63, 94, 0.2); color: #fda4af;">NEW TARGET</span>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 8px;">
+                <input type="text" id="new-wl-plate" class="filter-input" placeholder="Plate No. (e.g. GJ01ST0007, GJ18CR1122)" autocomplete="off">
+                <input type="text" id="new-wl-reason" class="filter-input" placeholder="Offense / FIR / Reason for flag" autocomplete="off">
+                <div style="display: flex; gap: 6px;">
+                  <select id="new-wl-category" class="filter-select" style="flex: 1;">
+                    <option value="Stolen">🚨 Stolen</option>
+                    <option value="Wanted">⚠️ Wanted</option>
+                    <option value="Hit and Run">⚡ Hit & Run</option>
+                    <option value="Suspension">📋 Suspension</option>
+                  </select>
+                  <select id="new-wl-severity" class="filter-select" style="flex: 1;">
+                    <option value="CRITICAL">🔴 CRITICAL</option>
+                    <option value="HIGH">🟠 HIGH</option>
+                    <option value="MEDIUM">🟡 MEDIUM</option>
+                  </select>
+                </div>
+                <button id="btn-add-watchlist-target" class="btn-header danger" style="justify-content: center; width: 100%; padding: 8px; font-weight: 600;">
+                  <i class="fas fa-shield-plus"></i> Enroll Target in Watchlist DB
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- MAP VIEWPORT -->
+      <section class="map-viewport-container">
+        <div id="gis-map"></div>
+
+        <!-- FLOATING TOP-RIGHT MAP CONTROLS -->
+        <div class="map-hud-overlay-top-right">
+          <!-- Layer Toggles -->
+          <div class="hud-control-group">
+            <label class="hud-switch-label" title="Assumed camera coverage radius (PRD 4.2)">
+              <input type="checkbox" id="chk-layer-circles" checked>
+              <span>🔵 Coverage</span>
+            </label>
+            <label class="hud-switch-label" title="Directional Field-of-View cones">
+              <input type="checkbox" id="chk-layer-cones">
+              <span>📐 FOV Cones</span>
+            </label>
+            <label class="hud-switch-label" title="Overlay 313 Gujarat Police Stations">
+              <input type="checkbox" id="chk-layer-stations" checked>
+              <span>🚓 Police Stations</span>
+            </label>
+            <label class="hud-switch-label" title="Coverage Gap Analysis Grid (5km x 5km)">
+              <input type="checkbox" id="chk-layer-gap">
+              <span>🔍 Gap Grid</span>
+            </label>
+            <label class="hud-switch-label" title="Focus strictly on State of Gujarat with dark exterior mask">
+              <input type="checkbox" id="chk-layer-mask" checked>
+              <span>🛡️ Gujarat Focus</span>
+            </label>
+          </div>
+
+          <!-- Base Tile Selector -->
+          <div class="map-layer-selector">
+            <button class="layer-btn active" data-layer="dark">Dark Surveillance</button>
+            <button class="layer-btn" data-layer="street">Street Map</button>
+            <button class="layer-btn" data-layer="satellite">Satellite</button>
+          </div>
+        </div>
+
+        <!-- MANDATORY COVERAGE ASSUMPTION DISCLAIMER (PRD 4.2) -->
+        <div class="coverage-disclaimer-badge">
+          <i class="fas fa-circle-info icon"></i>
+          <span>
+            <strong>Coverage Disclaimer:</strong> Estimated coverage, not measured — based on resolution-derived assumption (50m/35m/25m), pending real FOV data from camera owners.
+          </span>
+        </div>
+
+        <!-- GUJARAT EXCLUSIVE BADGE -->
+        <div class="gujarat-exclusive-badge">
+          <i class="fas fa-location-dot" style="color: var(--accent-cyan);"></i>
+          <span>STATE BOUNDARY LOCKED: <strong>GUJARAT EXCLUSIVE GRID</strong></span>
+        </div>
+
+        <!-- BOTTOM ROUTE REPLAY CONTROLLER (FEATURE 4) -->
+        <div id="route-replay-bar" class="route-replay-bar" style="display: none;">
+          <div class="replay-top-row">
+            <div class="replay-title-wrap">
+              <span id="replay-plate-label" class="replay-plate-pill">GJ01AB1234</span>
+              <span id="replay-status-text" class="replay-status-text">
+                <i class="fas fa-satellite-dish" style="color: var(--accent-purple);"></i> Initializing Route...
+              </span>
+            </div>
+            <div class="replay-controls">
+              <button id="btn-replay-prev" class="btn-ctrl" title="Previous Waypoint">
+                <i class="fas fa-backward-step"></i>
+              </button>
+              <button id="btn-replay-play" class="btn-ctrl play-btn" title="Play Route Replay">
+                <i class="fas fa-play"></i>
+              </button>
+              <button id="btn-replay-next" class="btn-ctrl" title="Next Waypoint">
+                <i class="fas fa-forward-step"></i>
+              </button>
+              <button id="btn-replay-speed" class="speed-toggle-btn" title="Playback Speed">1x</button>
+            </div>
+          </div>
+          <div class="replay-scrubber-track">
+            <input type="range" id="replay-slider" class="timeline-slider" min="0" max="7" value="0">
+            <span id="replay-timestamp-label" class="scrubber-timestamp">2026-09-04 08:10:15</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- LIVE CAMERA STREAM VIEWER MODAL -->
+    <div id="stream-modal" class="modal-backdrop">
+      <div class="hud-modal">
+        <div class="hud-modal-header">
+          <div class="modal-title-wrap">
+            <i class="fas fa-video" style="color: var(--accent-emerald);"></i>
+            <div>
+              <strong id="modal-cam-name" style="font-size: 14px; color: #fff;">Camera 1</strong>
+              <div id="modal-cam-dept" style="font-size: 11px; color: var(--text-muted);">Ahmedabad City Police</div>
+            </div>
+          </div>
+          <button id="btn-close-stream-modal" class="btn-modal-close"><i class="fas fa-xmark"></i></button>
+        </div>
+        <div class="hud-modal-body">
+          <div class="stream-preview-box">
+            <video id="stream-hls-video" style="display:none; position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; border-radius: 8px;" autoplay muted playsinline></video>
+            <canvas id="stream-canvas-preview" width="600" height="340" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; border-radius: 8px;"></canvas>
+            <div class="stream-radar-hud" style="z-index: 2;">
+              <div class="radar-sweep-line"></div>
+            </div>
+            <div class="stream-telemetry-badge" style="z-index: 3;">
+              <div style="color: var(--accent-emerald); font-weight: 700;">● LIVE TELEMETRY FEED</div>
+              <div>RES: <span id="modal-cam-res">1920x1080</span></div>
+              <div>CODEC: <span id="modal-cam-codec">H.264</span></div>
+              <div>FPS: <span id="modal-cam-fps">25.0 FPS</span></div>
+              <div>BITRATE: <span id="modal-cam-bitrate">1923 kbps</span></div>
+              <div>COORDS: <span id="modal-cam-coords">23.0694° N, 72.5872° E</span></div>
+            </div>
+          </div>
+          <div style="margin-top: 14px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-family: var(--font-mono); font-size: 11px;">
+            <div class="hud-card" style="padding: 10px;">
+              <div style="color: var(--text-muted); margin-bottom: 2px;">RTSP INGESTION ENDPOINT:</div>
+              <div id="modal-cam-rtsp" style="color: #93c5fd; word-break: break-all;">rtsp://live.corp8.cloud:8554/stream/1</div>
+            </div>
+            <div class="hud-card" style="padding: 10px;">
+              <div style="color: var(--text-muted); margin-bottom: 2px;">HLS LIVE WEBRTC / INDEX:</div>
+              <div id="modal-cam-hls" style="color: #34d399; word-break: break-all;">/live/stream/1/index.m3u8</div>
+            </div>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 12px; font-size: 12px;">
+            <span>STATUS: <span id="modal-cam-status" class="status-tag live">LIVE</span></span>
+            <span style="color: var(--text-muted); font-size: 11px;">Complies with sandbox streaming policies (Zero local archival storage)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ANPR FLEET SCAN MODAL -->
+    <div id="anpr-scan-modal" class="modal-backdrop">
+      <div class="hud-modal scan-modal">
+        <div class="hud-modal-header">
+          <div class="modal-title-wrap">
+            <i class="fas fa-satellite-dish" style="color: var(--accent-cyan); font-size: 18px;"></i>
+            <div>
+              <strong style="font-size: 14px; color: #fff;">AUTOMATED CCTV FLEET INGESTION & ANPR EXTRACTION</strong>
+              <div style="font-size: 11px; color: var(--text-muted);">Accessing 30 Gujarat Police Sandbox CCTV Streams across 20 Districts</div>
+            </div>
+          </div>
+          <button id="btn-close-scan-modal" class="btn-modal-close"><i class="fas fa-xmark"></i></button>
+        </div>
+        <div class="hud-modal-body">
+          <div class="scan-progress-box">
+            <div class="scan-status-row">
+              <span id="scan-status-text">Initializing Camera Ingestion Pipeline...</span>
+              <span id="scan-percent-text">0%</span>
+            </div>
+            <div class="scan-progress-bar-wrap">
+              <div id="scan-progress-fill" class="scan-progress-fill" style="width: 0%;"></div>
+            </div>
+          </div>
+
+          <div class="scan-stats-grid">
+            <div class="scan-stat-card">
+              <div class="scan-stat-val" id="stat-cams-count">0 / 30</div>
+              <div class="scan-stat-lbl">Cameras Ingested</div>
+            </div>
+            <div class="scan-stat-card">
+              <div class="scan-stat-val" id="stat-plates-count" style="color: var(--accent-emerald);">0</div>
+              <div class="scan-stat-lbl">Plates Extracted</div>
+            </div>
+            <div class="scan-stat-card">
+              <div class="scan-stat-val" id="stat-unique-count" style="color: var(--accent-cyan);">0</div>
+              <div class="scan-stat-lbl">Unique Vehicles</div>
+            </div>
+            <div class="scan-stat-card">
+              <div class="scan-stat-val" id="stat-watchlist-count" style="color: var(--accent-rose);">0</div>
+              <div class="scan-stat-lbl">Watchlist Hits</div>
+            </div>
+          </div>
+
+          <div class="scan-live-preview-box">
+            <canvas id="scan-mini-canvas" width="480" height="230"></canvas>
+          </div>
+
+          <div class="scan-log-console" id="scan-log-console">
+            <div class="log-line info">[SYS] Ingestion Pipeline initialized for 30 Gujarat sandbox nodes.</div>
+          </div>
+
+          <div class="scan-footer-actions">
+            <button id="btn-cancel-scan" class="btn-action-sm">Close Window</button>
+            <button id="btn-inspect-results" class="btn-action-sm primary" style="display: none;">
+              <i class="fas fa-magnifying-glass"></i> Search Extracted Vehicles
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CUSTOM VIDEO FEED ANPR INGESTION MODAL (P0 Item 1) -->
+    <div id="video-anpr-modal" class="modal-backdrop">
+      <div class="hud-modal scan-modal" style="max-width: 680px;">
+        <div class="hud-modal-header">
+          <div class="modal-title-wrap">
+            <i class="fas fa-file-video" style="color: var(--accent-cyan); font-size: 18px;"></i>
+            <div>
+              <strong style="font-size: 14px; color: #fff;">TEST VIDEO ANPR & INFERENCE PIPELINE</strong>
+              <div id="video-anpr-cam-node" style="font-size: 11px; color: var(--text-muted);">Custom Feed Ingestion • Node: Camera 1</div>
+            </div>
+          </div>
+          <button id="btn-close-video-modal" class="btn-modal-close"><i class="fas fa-xmark"></i></button>
+        </div>
+        <div class="hud-modal-body">
+          <div style="font-size: 11px; color: var(--text-secondary); margin-bottom: 8px; display: flex; justify-content: space-between;">
+            <span>Source: <strong id="video-anpr-filename" style="color: #93c5fd;">sample_test_feed.mp4</strong></span>
+            <span style="color: var(--accent-emerald);"><i class="fas fa-microchip"></i> INFERENCE ENGINE ACTIVE</span>
+          </div>
+
+          <div class="scan-live-preview-box" style="position: relative; height: 320px;">
+            <video id="anpr-uploaded-video" style="display: none;" playsinline loop muted></video>
+            <canvas id="anpr-uploaded-canvas" width="640" height="360" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; background: #000; border-radius: 8px;"></canvas>
+          </div>
+
+          <!-- Live Detection Readout HUD -->
+          <div style="margin-top: 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+            <div class="hud-card" style="padding: 10px;">
+              <div style="font-size: 11px; color: var(--text-muted);">EXTRACTED REGISTRATION:</div>
+              <div id="video-anpr-plate-display" style="font-size: 18px; font-weight: 800; font-family: var(--font-mono); color: var(--accent-cyan); margin-top: 2px;">
+                GJ01AB1234
+              </div>
+            </div>
+            <div class="hud-card" style="padding: 10px;">
+              <div style="font-size: 11px; color: var(--text-muted);">OCR CONFIDENCE:</div>
+              <div id="video-anpr-conf-display" style="font-size: 18px; font-weight: 800; font-family: var(--font-mono); color: var(--accent-emerald); margin-top: 2px;">
+                97.8% (HIGH)
+              </div>
+            </div>
+          </div>
+
+          <div id="video-anpr-hit-banner" class="fuzzy-hint-banner" style="display: none; background: rgba(244,63,94,0.25); border-color: var(--accent-rose); color: #fecdd3; margin-top: 10px;"></div>
+
+          <div class="scan-footer-actions" style="margin-top: 14px;">
+            <button id="btn-close-video-modal-btn" class="btn-action-sm" onclick="document.getElementById('btn-close-video-modal').click()">Close Window</button>
+            <button id="btn-video-trace-route" class="btn-action-sm primary">
+              <i class="fas fa-route"></i> Trace Vehicle Route on GIS Map
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- REAL-TIME LIVE ALERT POPUP -->
+    <div id="live-alert-popup" class="live-alert-popup">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <div style="display: flex; align-items: center; gap: 8px; color: var(--accent-rose); font-weight: 700;">
+          <i class="fas fa-siren-on" style="animation: pulseBeacon 1s infinite;"></i>
+          <span>AUTOMATED WATCHLIST INTERCEPT</span>
+        </div>
+        <button id="btn-close-alert" class="btn-modal-close" style="color: #fda4af;"><i class="fas fa-xmark"></i></button>
+      </div>
+      <div>
+        <div style="font-size: 18px; font-weight: 800; font-family: var(--font-mono); color: #fff; background: #000; padding: 4px 8px; border-radius: 4px; border: 1px solid var(--accent-rose); display: inline-block;">
+          <span id="alert-plate-number">GJ01ST0007</span>
+        </div>
+        <div id="alert-reason" style="font-size: 12px; color: #fca5a5; margin-top: 6px; font-weight: 600;">
+          CRITICAL: STOLEN VEHICLE FLAGGED (FIR #2026-8812)
+        </div>
+      </div>
+      <div style="background: rgba(0,0,0,0.4); padding: 8px; border-radius: 6px; font-size: 11px; display: flex; flex-direction: column; gap: 4px;">
+        <div>Detected At: <strong id="alert-location" style="color: #fff;">01 Chiman bhai Bridge</strong></div>
+        <div>Nearest Police Unit: <strong id="alert-station" style="color: #93c5fd;">Navrangpura PS (1.8 km, ETA: 5 mins)</strong></div>
+      </div>
+      <button id="btn-dispatch-alert" style="width: 100%; padding: 8px; background: var(--accent-rose); color: #fff; border: none; border-radius: 6px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;">
+        <i class="fas fa-bullhorn"></i> ISSUE 1-CLICK DISPATCH
+      </button>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
