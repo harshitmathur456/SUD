@@ -789,5 +789,613 @@
       "eta_minutes": 3.5,
       "dispatch_status": "MONITORING"
     }
+  },
+  {
+    "id": "gov-cam01-1788529118493",
+    "plate_number": "FETF",
+    "camera_id": "cam01",
+    "camera_name": "01 Chiman bhai Bridge",
+    "timestamp": "2026-09-04 13:38:38.493",
+    "pts_timestamp": 1788529118493,
+    "confidence": 0.005,
+    "vehicle_type": "Motor Vehicle",
+    "source": "Government Sandbox Feed (live.corp8.cloud)",
+    "watchlist_flag": false,
+    "watchlist_category": null,
+    "nearest_police_station": {
+      "name": "Sabarmati Police Station",
+      "distance_km": 1.2,
+      "eta_minutes": 3.5,
+      "dispatch_status": "MONITORING"
+    }
+  },
+  {
+    "id": "gov-cam01-1788529119326",
+    "plate_number": "CS1TM532",
+    "camera_id": "cam01",
+    "camera_name": "01 Chiman bhai Bridge",
+    "timestamp": "2026-09-04 13:38:39.326",
+    "pts_timestamp": 1788529119326,
+    "confidence": 0.998,
+    "vehicle_type": "Motor Vehicle",
+    "source": "Government Sandbox Feed (live.corp8.cloud)",
+    "watchlist_flag": false,
+    "watchlist_category": null,
+    "nearest_police_station": {
+      "name": "Sabarmati Police Station",
+      "distance_km": 1.2,
+      "eta_minutes": 3.5,
+      "dispatch_status": "MONITORING"
+    }
+  },
+  {
+    "id": "gov-cam01-1788529119326",
+    "plate_number": "CH1RAVAN",
+    "camera_id": "cam01",
+    "camera_name": "01 Chiman bhai Bridge",
+    "timestamp": "2026-09-04 13:38:39.326",
+    "pts_timestamp": 1788529119326,
+    "confidence": 0.365,
+    "vehicle_type": "Motor Vehicle",
+    "source": "Government Sandbox Feed (live.corp8.cloud)",
+    "watchlist_flag": false,
+    "watchlist_category": null,
+    "nearest_police_station": {
+      "name": "Sabarmati Police Station",
+      "distance_km": 1.2,
+      "eta_minutes": 3.5,
+      "dispatch_status": "MONITORING"
+    }
+  },
+  {
+    "id": "gov-cam01-1788529119326",
+    "plate_number": "BR10GE",
+    "camera_id": "cam01",
+    "camera_name": "01 Chiman bhai Bridge",
+    "timestamp": "2026-09-04 13:38:39.326",
+    "pts_timestamp": 1788529119326,
+    "confidence": 0.612,
+    "vehicle_type": "Motor Vehicle",
+    "source": "Government Sandbox Feed (live.corp8.cloud)",
+    "watchlist_flag": false,
+    "watchlist_category": null,
+    "nearest_police_station": {
+      "name": "Sabarmati Police Station",
+      "distance_km": 1.2,
+      "eta_minutes": 3.5,
+      "dispatch_status": "MONITORING"
+    }
+  },
+  {
+    "id": "gov-cam01-1788529119326",
+    "plate_number": "PT22",
+    "camera_id": "cam01",
+    "camera_name": "01 Chiman bhai Bridge",
+    "timestamp": "2026-09-04 13:38:39.326",
+    "pts_timestamp": 1788529119326,
+    "confidence": 0.764,
+    "vehicle_type": "Motor Vehicle",
+    "source": "Government Sandbox Feed (live.corp8.cloud)",
+    "watchlist_flag": false,
+    "watchlist_category": null,
+    "nearest_police_station": {
+      "name": "Sabarmati Police Station",
+      "distance_km": 1.2,
+      "eta_minutes": 3.5,
+      "dispatch_status": "MONITORING"
+    }
+  },
+  {
+    "id": "gov-cam01-1788529119326",
+    "plate_number": "PHA1",
+    "camera_id": "cam01",
+    "camera_name": "01 Chiman bhai Bridge",
+    "timestamp": "2026-09-04 13:38:39.326",
+    "pts_timestamp": 1788529119326,
+    "confidence": 0.992,
+    "vehicle_type": "Motor Vehicle",
+    "source": "Government Sandbox Feed (live.corp8.cloud)",
+    "watchlist_flag": false,
+    "watchlist_category": null,
+    "nearest_police_station": {
+      "name": "Sabarmati Police Station",
+      "distance_km": 1.2,
+      "eta_minutes": 3.5,
+      "dispatch_status": "MONITORING"
+    }
+  },
+  {
+    "id": "gov-cam01-1788529119493",
+    "plate_number": "CH1MAN",
+    "camera_id": "cam01",
+    "camera_name": "01 Chiman bhai Bridge",
+    "timestamp": "2026-09-04 13:38:39.493",
+    "pts_timestamp": 1788529119493,
+    "confidence": 1.0,
+    "vehicle_type": "Motor Vehicle",
+    "source": "Government Sandbox Feed (live.corp8.cloud)",
+    "watchlist_flag": false,
+    "watchlist_category": null,
+    "nearest_police_station": {
+      "name": "Sabarmati Police Station",
+      "distance_km": 1.2,
+      "eta_minutes": 3.5,
+      "dispatch_status": "MONITORING"
+    }
+  },
+  {
+    "id": "gov-cam01-1788529119826",
+    "plate_number": "4S32",
+    "camera_id": "cam01",
+    "camera_name": "01 Chiman bhai Bridge",
+    "timestamp": "2026-09-04 13:38:39.826",
+    "pts_timestamp": 1788529119826,
+    "confidence": 0.314,
+    "vehicle_type": "Motor Vehicle",
+    "source": "Government Sandbox Feed (live.corp8.cloud)",
+    "watchlist_flag": false,
+    "watchlist_category": null,
+    "nearest_police_station": {
+      "name": "Sabarmati Police Station",
+      "distance_km": 1.2,
+      "eta_minutes": 3.5,
+      "dispatch_status": "MONITORING"
+    }
+  },
+  {
+    "id": "gov-cam01-1788529119993",
+    "plate_number": "SITMS",
+    "camera_id": "cam01",
+    "camera_name": "01 Chiman bhai Bridge",
+    "timestamp": "2026-09-04 13:38:39.993",
+    "pts_timestamp": 1788529119993,
+    "confidence": 0.971,
+    "vehicle_type": "Motor Vehicle",
+    "source": "Government Sandbox Feed (live.corp8.cloud)",
+    "watchlist_flag": false,
+    "watchlist_category": null,
+    "nearest_police_station": {
+      "name": "Sabarmati Police Station",
+      "distance_km": 1.2,
+      "eta_minutes": 3.5,
+      "dispatch_status": "MONITORING"
+    }
+  },
+  {
+    "id": "gov-cam01-1788529120326",
+    "plate_number": "CH1MAN",
+    "camera_id": "cam01",
+    "camera_name": "01 Chiman bhai Bridge",
+    "timestamp": "2026-09-04 13:38:40.326",
+    "pts_timestamp": 1788529120326,
+    "confidence": 1.0,
+    "vehicle_type": "Motor Vehicle",
+    "source": "Government Sandbox Feed (live.corp8.cloud)",
+    "watchlist_flag": false,
+    "watchlist_category": null,
+    "nearest_police_station": {
+      "name": "Sabarmati Police Station",
+      "distance_km": 1.2,
+      "eta_minutes": 3.5,
+      "dispatch_status": "MONITORING"
+    }
+  },
+  {
+    "id": "gov-cam02-1788529373885",
+    "plate_number": "EUUATNT",
+    "camera_id": "cam02",
+    "camera_name": "02 Janpath",
+    "timestamp": "2026-09-04 13:42:53.885",
+    "pts_timestamp": 1788529373885,
+    "confidence": 0.031,
+    "vehicle_type": "Motor Vehicle",
+    "source": "Government Sandbox Feed (live.corp8.cloud)",
+    "watchlist_flag": false,
+    "watchlist_category": null,
+    "nearest_police_station": {
+      "name": "Sabarmati Police Station",
+      "distance_km": 1.2,
+      "eta_minutes": 3.5,
+      "dispatch_status": "MONITORING"
+    }
+  },
+  {
+    "id": "gov-cam02-1788529447913",
+    "plate_number": "EUUATNT",
+    "camera_id": "cam02",
+    "camera_name": "02 Janpath",
+    "timestamp": "2026-09-04 13:44:07.913",
+    "pts_timestamp": 1788529447913,
+    "confidence": 0.031,
+    "vehicle_type": "Motor Vehicle",
+    "source": "Government Sandbox Feed (live.corp8.cloud)",
+    "watchlist_flag": false,
+    "watchlist_category": null,
+    "nearest_police_station": {
+      "name": "Sabarmati Police Station",
+      "distance_km": 1.2,
+      "eta_minutes": 3.5,
+      "dispatch_status": "MONITORING"
+    }
+  },
+  {
+    "id": "gov-cam02-1788529450846",
+    "plate_number": "JANPATH",
+    "camera_id": "cam02",
+    "camera_name": "02 Janpath",
+    "timestamp": "2026-09-04 13:44:10.846",
+    "pts_timestamp": 1788529450846,
+    "confidence": 0.978,
+    "vehicle_type": "Motor Vehicle",
+    "source": "Government Sandbox Feed (live.corp8.cloud)",
+    "watchlist_flag": false,
+    "watchlist_category": null,
+    "nearest_police_station": {
+      "name": "Sabarmati Police Station",
+      "distance_km": 1.2,
+      "eta_minutes": 3.5,
+      "dispatch_status": "MONITORING"
+    }
+  },
+  {
+    "id": "gov-cam02-1788529450846",
+    "plate_number": "CS1TMS",
+    "camera_id": "cam02",
+    "camera_name": "02 Janpath",
+    "timestamp": "2026-09-04 13:44:10.846",
+    "pts_timestamp": 1788529450846,
+    "confidence": 0.993,
+    "vehicle_type": "Motor Vehicle",
+    "source": "Government Sandbox Feed (live.corp8.cloud)",
+    "watchlist_flag": false,
+    "watchlist_category": null,
+    "nearest_police_station": {
+      "name": "Sabarmati Police Station",
+      "distance_km": 1.2,
+      "eta_minutes": 3.5,
+      "dispatch_status": "MONITORING"
+    }
+  },
+  {
+    "id": "gov-cam02-1788529450846",
+    "plate_number": "PT22",
+    "camera_id": "cam02",
+    "camera_name": "02 Janpath",
+    "timestamp": "2026-09-04 13:44:10.846",
+    "pts_timestamp": 1788529450846,
+    "confidence": 0.73,
+    "vehicle_type": "Motor Vehicle",
+    "source": "Government Sandbox Feed (live.corp8.cloud)",
+    "watchlist_flag": false,
+    "watchlist_category": null,
+    "nearest_police_station": {
+      "name": "Sabarmati Police Station",
+      "distance_km": 1.2,
+      "eta_minutes": 3.5,
+      "dispatch_status": "MONITORING"
+    }
+  },
+  {
+    "id": "gov-cam02-1788529451113",
+    "plate_number": "JANPATH",
+    "camera_id": "cam02",
+    "camera_name": "02 Janpath",
+    "timestamp": "2026-09-04 13:44:11.113",
+    "pts_timestamp": 1788529451113,
+    "confidence": 1.0,
+    "vehicle_type": "Motor Vehicle",
+    "source": "Government Sandbox Feed (live.corp8.cloud)",
+    "watchlist_flag": false,
+    "watchlist_category": null,
+    "nearest_police_station": {
+      "name": "Sabarmati Police Station",
+      "distance_km": 1.2,
+      "eta_minutes": 3.5,
+      "dispatch_status": "MONITORING"
+    }
+  },
+  {
+    "id": "gov-cam02-1788529451113",
+    "plate_number": "CS1TMS",
+    "camera_id": "cam02",
+    "camera_name": "02 Janpath",
+    "timestamp": "2026-09-04 13:44:11.113",
+    "pts_timestamp": 1788529451113,
+    "confidence": 0.49200000000000005,
+    "vehicle_type": "Motor Vehicle",
+    "source": "Government Sandbox Feed (live.corp8.cloud)",
+    "watchlist_flag": false,
+    "watchlist_category": null,
+    "nearest_police_station": {
+      "name": "Sabarmati Police Station",
+      "distance_km": 1.2,
+      "eta_minutes": 3.5,
+      "dispatch_status": "MONITORING"
+    }
+  },
+  {
+    "id": "gov-cam02-1788529451113",
+    "plate_number": "PT22",
+    "camera_id": "cam02",
+    "camera_name": "02 Janpath",
+    "timestamp": "2026-09-04 13:44:11.113",
+    "pts_timestamp": 1788529451113,
+    "confidence": 0.56,
+    "vehicle_type": "Motor Vehicle",
+    "source": "Government Sandbox Feed (live.corp8.cloud)",
+    "watchlist_flag": false,
+    "watchlist_category": null,
+    "nearest_police_station": {
+      "name": "Sabarmati Police Station",
+      "distance_km": 1.2,
+      "eta_minutes": 3.5,
+      "dispatch_status": "MONITORING"
+    }
+  },
+  {
+    "id": "gov-cam02-1788529451646",
+    "plate_number": "JANPATH",
+    "camera_id": "cam02",
+    "camera_name": "02 Janpath",
+    "timestamp": "2026-09-04 13:44:11.646",
+    "pts_timestamp": 1788529451646,
+    "confidence": 0.976,
+    "vehicle_type": "Motor Vehicle",
+    "source": "Government Sandbox Feed (live.corp8.cloud)",
+    "watchlist_flag": false,
+    "watchlist_category": null,
+    "nearest_police_station": {
+      "name": "Sabarmati Police Station",
+      "distance_km": 1.2,
+      "eta_minutes": 3.5,
+      "dispatch_status": "MONITORING"
+    }
+  },
+  {
+    "id": "gov-cam02-1788529451646",
+    "plate_number": "IJPTZ2",
+    "camera_id": "cam02",
+    "camera_name": "02 Janpath",
+    "timestamp": "2026-09-04 13:44:11.646",
+    "pts_timestamp": 1788529451646,
+    "confidence": 0.775,
+    "vehicle_type": "Motor Vehicle",
+    "source": "Government Sandbox Feed (live.corp8.cloud)",
+    "watchlist_flag": false,
+    "watchlist_category": null,
+    "nearest_police_station": {
+      "name": "Sabarmati Police Station",
+      "distance_km": 1.2,
+      "eta_minutes": 3.5,
+      "dispatch_status": "MONITORING"
+    }
+  },
+  {
+    "id": "gov-cam02-1788529451913",
+    "plate_number": "CS1TMS",
+    "camera_id": "cam02",
+    "camera_name": "02 Janpath",
+    "timestamp": "2026-09-04 13:44:11.913",
+    "pts_timestamp": 1788529451913,
+    "confidence": 0.993,
+    "vehicle_type": "Motor Vehicle",
+    "source": "Government Sandbox Feed (live.corp8.cloud)",
+    "watchlist_flag": false,
+    "watchlist_category": null,
+    "nearest_police_station": {
+      "name": "Sabarmati Police Station",
+      "distance_km": 1.2,
+      "eta_minutes": 3.5,
+      "dispatch_status": "MONITORING"
+    }
+  },
+  {
+    "id": "gov-cam02-1788529451913",
+    "plate_number": "JANPATH",
+    "camera_id": "cam02",
+    "camera_name": "02 Janpath",
+    "timestamp": "2026-09-04 13:44:11.913",
+    "pts_timestamp": 1788529451913,
+    "confidence": 0.9990000000000001,
+    "vehicle_type": "Motor Vehicle",
+    "source": "Government Sandbox Feed (live.corp8.cloud)",
+    "watchlist_flag": false,
+    "watchlist_category": null,
+    "nearest_police_station": {
+      "name": "Sabarmati Police Station",
+      "distance_km": 1.2,
+      "eta_minutes": 3.5,
+      "dispatch_status": "MONITORING"
+    }
+  },
+  {
+    "id": "gov-cam02-1788529451913",
+    "plate_number": "PT22",
+    "camera_id": "cam02",
+    "camera_name": "02 Janpath",
+    "timestamp": "2026-09-04 13:44:11.913",
+    "pts_timestamp": 1788529451913,
+    "confidence": 0.49700000000000005,
+    "vehicle_type": "Motor Vehicle",
+    "source": "Government Sandbox Feed (live.corp8.cloud)",
+    "watchlist_flag": false,
+    "watchlist_category": null,
+    "nearest_police_station": {
+      "name": "Sabarmati Police Station",
+      "distance_km": 1.2,
+      "eta_minutes": 3.5,
+      "dispatch_status": "MONITORING"
+    }
+  },
+  {
+    "id": "gov-cam02-1788529452179",
+    "plate_number": "JANPATH",
+    "camera_id": "cam02",
+    "camera_name": "02 Janpath",
+    "timestamp": "2026-09-04 13:44:12.179",
+    "pts_timestamp": 1788529452179,
+    "confidence": 0.9109999999999999,
+    "vehicle_type": "Motor Vehicle",
+    "source": "Government Sandbox Feed (live.corp8.cloud)",
+    "watchlist_flag": false,
+    "watchlist_category": null,
+    "nearest_police_station": {
+      "name": "Sabarmati Police Station",
+      "distance_km": 1.2,
+      "eta_minutes": 3.5,
+      "dispatch_status": "MONITORING"
+    }
+  },
+  {
+    "id": "gov-cam02-1788529452179",
+    "plate_number": "CS1TMS",
+    "camera_id": "cam02",
+    "camera_name": "02 Janpath",
+    "timestamp": "2026-09-04 13:44:12.179",
+    "pts_timestamp": 1788529452179,
+    "confidence": 0.8640000000000001,
+    "vehicle_type": "Motor Vehicle",
+    "source": "Government Sandbox Feed (live.corp8.cloud)",
+    "watchlist_flag": false,
+    "watchlist_category": null,
+    "nearest_police_station": {
+      "name": "Sabarmati Police Station",
+      "distance_km": 1.2,
+      "eta_minutes": 3.5,
+      "dispatch_status": "MONITORING"
+    }
+  },
+  {
+    "id": "gov-cam02-1788529452179",
+    "plate_number": "PT22",
+    "camera_id": "cam02",
+    "camera_name": "02 Janpath",
+    "timestamp": "2026-09-04 13:44:12.179",
+    "pts_timestamp": 1788529452179,
+    "confidence": 0.555,
+    "vehicle_type": "Motor Vehicle",
+    "source": "Government Sandbox Feed (live.corp8.cloud)",
+    "watchlist_flag": false,
+    "watchlist_category": null,
+    "nearest_police_station": {
+      "name": "Sabarmati Police Station",
+      "distance_km": 1.2,
+      "eta_minutes": 3.5,
+      "dispatch_status": "MONITORING"
+    }
+  },
+  {
+    "id": "gov-cam02-1788529452979",
+    "plate_number": "JANPATH",
+    "camera_id": "cam02",
+    "camera_name": "02 Janpath",
+    "timestamp": "2026-09-04 13:44:12.979",
+    "pts_timestamp": 1788529452979,
+    "confidence": 0.578,
+    "vehicle_type": "Motor Vehicle",
+    "source": "Government Sandbox Feed (live.corp8.cloud)",
+    "watchlist_flag": false,
+    "watchlist_category": null,
+    "nearest_police_station": {
+      "name": "Sabarmati Police Station",
+      "distance_km": 1.2,
+      "eta_minutes": 3.5,
+      "dispatch_status": "MONITORING"
+    }
+  },
+  {
+    "id": "gov-cam02-1788529452979",
+    "plate_number": "CS1TMS",
+    "camera_id": "cam02",
+    "camera_name": "02 Janpath",
+    "timestamp": "2026-09-04 13:44:12.979",
+    "pts_timestamp": 1788529452979,
+    "confidence": 0.965,
+    "vehicle_type": "Motor Vehicle",
+    "source": "Government Sandbox Feed (live.corp8.cloud)",
+    "watchlist_flag": false,
+    "watchlist_category": null,
+    "nearest_police_station": {
+      "name": "Sabarmati Police Station",
+      "distance_km": 1.2,
+      "eta_minutes": 3.5,
+      "dispatch_status": "MONITORING"
+    }
+  },
+  {
+    "id": "gov-cam02-1788529452979",
+    "plate_number": "PT22",
+    "camera_id": "cam02",
+    "camera_name": "02 Janpath",
+    "timestamp": "2026-09-04 13:44:12.979",
+    "pts_timestamp": 1788529452979,
+    "confidence": 0.629,
+    "vehicle_type": "Motor Vehicle",
+    "source": "Government Sandbox Feed (live.corp8.cloud)",
+    "watchlist_flag": false,
+    "watchlist_category": null,
+    "nearest_police_station": {
+      "name": "Sabarmati Police Station",
+      "distance_km": 1.2,
+      "eta_minutes": 3.5,
+      "dispatch_status": "MONITORING"
+    }
+  },
+  {
+    "id": "gov-cam02-1788529453246",
+    "plate_number": "JANPATH",
+    "camera_id": "cam02",
+    "camera_name": "02 Janpath",
+    "timestamp": "2026-09-04 13:44:13.246",
+    "pts_timestamp": 1788529453246,
+    "confidence": 0.556,
+    "vehicle_type": "Motor Vehicle",
+    "source": "Government Sandbox Feed (live.corp8.cloud)",
+    "watchlist_flag": false,
+    "watchlist_category": null,
+    "nearest_police_station": {
+      "name": "Sabarmati Police Station",
+      "distance_km": 1.2,
+      "eta_minutes": 3.5,
+      "dispatch_status": "MONITORING"
+    }
+  },
+  {
+    "id": "gov-cam02-1788529453246",
+    "plate_number": "CS1TMS",
+    "camera_id": "cam02",
+    "camera_name": "02 Janpath",
+    "timestamp": "2026-09-04 13:44:13.246",
+    "pts_timestamp": 1788529453246,
+    "confidence": 0.625,
+    "vehicle_type": "Motor Vehicle",
+    "source": "Government Sandbox Feed (live.corp8.cloud)",
+    "watchlist_flag": false,
+    "watchlist_category": null,
+    "nearest_police_station": {
+      "name": "Sabarmati Police Station",
+      "distance_km": 1.2,
+      "eta_minutes": 3.5,
+      "dispatch_status": "MONITORING"
+    }
+  },
+  {
+    "id": "gov-cam02-1788529453246",
+    "plate_number": "PT22",
+    "camera_id": "cam02",
+    "camera_name": "02 Janpath",
+    "timestamp": "2026-09-04 13:44:13.246",
+    "pts_timestamp": 1788529453246,
+    "confidence": 0.505,
+    "vehicle_type": "Motor Vehicle",
+    "source": "Government Sandbox Feed (live.corp8.cloud)",
+    "watchlist_flag": false,
+    "watchlist_category": null,
+    "nearest_police_station": {
+      "name": "Sabarmati Police Station",
+      "distance_km": 1.2,
+      "eta_minutes": 3.5,
+      "dispatch_status": "MONITORING"
+    }
   }
 ]

@@ -214,16 +214,21 @@ class GovSandboxStreamPipeline:
 
         start_epoch_ms = int(time.time() * 1000)
 
-        print("-" * 72)
-        print(f"[*] Processing frames with YOLOv8n vehicle detector and EasyOCR reader...")
+        # Calculate sampling interval to span the entire segment duration
+        if sample_interval is None or sample_interval <= 0:
+            effective_interval = max(1, total_frames // max(1, max_frames))
+        else:
+            effective_interval = sample_interval
 
-        while frame_idx < total_frames and processed_count < max_frames:
+        print(f"[*] Total Segment Frames: {total_frames} | Sample Interval: every {effective_interval} frames (Evaluating full {total_frames/fps:.1f}s segment)")
+
+        while frame_idx < total_frames:
             ret, frame = cap.read()
             if not ret:
                 break
             frame_idx += 1
 
-            if frame_idx % sample_interval != 0:
+            if frame_idx % effective_interval != 0:
                 continue
 
             processed_count += 1
@@ -381,8 +386,8 @@ if __name__ == "__main__":
     parser.add_argument("--camera-id", type=str, default="cam01", help="Camera ID (e.g. cam01, cam02, 1, 4)")
     parser.add_argument("--email", type=str, default=DEFAULT_EMAIL, help="Registered Sandbox Email")
     parser.add_argument("--password", type=str, default=DEFAULT_PASSWORD, help="Access Password")
-    parser.add_argument("--frames", type=int, default=40, help="Max frames to process")
-    parser.add_argument("--interval", type=int, default=4, help="Frame sampling interval")
+    parser.add_argument("--frames", type=int, default=25, help="Approximate number of frames to sample across segment")
+    parser.add_argument("--interval", type=int, default=None, help="Explicit frame sampling interval (e.g. 5 or 10)")
     parser.add_argument("--no-video", action="store_true", help="Skip writing annotated MP4")
     args = parser.parse_args()
 
