@@ -25,6 +25,10 @@ if sys.platform == 'win32':
     except Exception:
         pass
 
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+if CURRENT_DIR not in sys.path:
+    sys.path.insert(0, CURRENT_DIR)
+
 from watchlist_db import check_watchlist, WATCHLIST_DATABASE
 
 # Indian License Plate Regex pattern (e.g., GJ01AB1234, GJ05WL9999, MH12DE1432)

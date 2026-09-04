@@ -17,6 +17,8 @@ __pycache__/
 *.swp
 *.swo
 .DS_Store
+password.txt
+*.ts
 
 # Temporary outputs
 output/thumbnails/*.jpg
